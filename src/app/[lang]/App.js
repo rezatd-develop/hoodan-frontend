@@ -6,7 +6,6 @@ import ReduxMiddlewares from '../../utilities/ReduxMiddlewares';
 
 
 export default function App({ t, lang }) {
-
     return (
         <Provider store={store} >
             <ReduxMiddlewares t={t} lang={lang}>

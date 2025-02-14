@@ -1,10 +1,19 @@
 {
-    "page": {
-      "title": "فراسی",
-      "desc": "فراسی"
-    },
-    "home": {
-      "title": "فراسی",
-      "desc": "فراسی"
-    }
+  "isLoaded": true,
+  "hedaer": {
+    "searchBarPlaceholder": "جستجو با نام خواننده، گالری، استایل، تم، تگ و ..."
+  },
+  "common": {
+    "buy": "خرید",
+    "priceDatabase": "دیتابیس قیمت",
+    "editorial": "سرمقاله"
+  },
+  "page": {
+    "title": "فراسی",
+    "desc": "فراسی"
+  },
+  "home": {
+    "title": "فراسی",
+    "desc": "فراسی"
   }
+}

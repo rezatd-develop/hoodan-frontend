@@ -1,23 +1,48 @@
 'use client'
 
-import Link from "next/link";
 import Image from "next/image";
-import logo from "../../../media/images/company/logo.png";
-import HoTextInput from "../../../components/input/HoTextInput";
+import Link from "next/link";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import HoTextInput from "../../../components/input/HoTextInput";
+import logo from "../../../media/images/company/logo.png";
 
 export default function PuHeader() {
   const t = useSelector((state) => state.dictionary.t);
-console.log('***t',t)
+  const [selectedNavLink, setSelectedNavLink] = useState(null);
+
+  const navLinks = [
+    { id: 1, label: t?.common?.buy, href: '/' },
+    { id: 1, label: t?.common?.priceDatabase, href: '/' },
+    { id: 1, label: t?.common?.editorial, href: '/' },
+  ];
+
   return (
     <nav className="navbar navbar-expand-lg px-4">
-      <div className="container-fluid">
+      <div className="container-fluid d-flex">
         <Link className="navbar-brand" href="/">
           <Image src={logo} alt="hoodan logo" width={40} height={40} />
         </Link>
-        {/* <HoTextInput placeholder= /> */}
+        <HoTextInput placeholder={t?.hedaer?.searchBarPlaceholder}
+          className='w-100 me-3' />
 
-        <button
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+
+            {navLinks?.map(item =>
+              <Link className="nav-link white-space active"
+                href={item.href}
+                key={item.id}
+                onClick={() => setSelectedNavLink(item)}
+              >
+
+                {item.label}
+              </Link>)}
+
+
+
+
+            {/* <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -27,69 +52,11 @@ console.log('***t',t)
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Link
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true">
-                Disabled
-              </a>
-            </li>
-          </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+        </button> */}
+
+          </div>
         </div>
       </div>
-    </nav>
+    </nav >
   );
 }
