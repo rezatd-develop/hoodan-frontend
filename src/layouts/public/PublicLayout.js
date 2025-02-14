@@ -1,5 +1,4 @@
 import PuHeader from "../../layouts/public/puHeader/PuHeader";
-import PuFooter from "../../layouts/public/PuFooter/PuFooter";
 import '../../styles/layout/public/public.css';
 
 export default function PublicLayout({ children }) {
@@ -8,7 +7,6 @@ export default function PublicLayout({ children }) {
     <div>
       <PuHeader />
       {children}
-      <PuFooter />
     </div>
   );
 }
