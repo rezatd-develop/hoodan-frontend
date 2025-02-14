@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "../globals.css";
-
+import "bootstrap/dist/css/bootstrap.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,10 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl">
-      <body >
-        {children}
-      </body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
 }
