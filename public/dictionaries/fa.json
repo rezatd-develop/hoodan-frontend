@@ -6,7 +6,9 @@
   "common": {
     "buy": "خرید",
     "priceDatabase": "دیتابیس قیمت",
-    "editorial": "سرمقاله"
+    "editorial": "سرمقاله",
+    "login": "ورود",
+    "signUp": "ثبت نام"
   },
   "page": {
     "title": "فراسی",

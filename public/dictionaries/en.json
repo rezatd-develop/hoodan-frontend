@@ -6,7 +6,9 @@
   "common": {
     "buy": "Buy",
     "priceDatabase": "Price Database",
-    "editorial": "Editorial"
+    "editorial": "Editorial",
+    "login": "Log In",
+    "signUp": "Sign Up"
   },
   "page": {
     "title": "Next.js i18n Demo",
