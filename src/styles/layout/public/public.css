@@ -1,0 +1,125 @@
+/* Mobile Menu Styles */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 80%;
+    max-width: 300px;
+    background: white;
+    z-index: 1000;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.mobile-menu.open {
+    right: 0;
+}
+
+.menu-container {
+    position: relative;
+    flex-grow: 1;
+}
+
+.menu-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    background: white;
+}
+
+.menu-panel.submenu {
+    transform: translateX(100%);
+}
+
+.menu-panel.submenu.active {
+    transform: translateX(0);
+}
+
+.back-button {
+    background: none;
+    border: none;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    color: #666;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    align-self: flex-end;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-item,
+.parent-item {
+    display: block;
+    padding: 12px 0;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    text-align: left;
+    background: none;
+}
+
+.parent-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.arrow {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.auth-buttons {
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+/* Animation */
+.menu-panel {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.menu-panel:first-child {
+    transform: translateX(0);
+}
+
+.menu-panel.submenu {
+    .menu-panel.submenu {
+        transform: translateX(100%);
+    }
+}
+
+.menu-panel.submenu.active {
+    transform: translateX(0);
+}

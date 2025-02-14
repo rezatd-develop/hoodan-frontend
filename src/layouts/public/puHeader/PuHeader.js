@@ -4,7 +4,7 @@ import PuTopHeader from './PuTopHeader';
 
 export default function PuHeader() {
   return (
-    <div className='mt-2'>
+    <div className='mt-3'>
       <PuTopHeader />
       {!isMobile() && <PuBottomHeader />}
     </div>

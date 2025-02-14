@@ -1,7 +1,8 @@
 {
   "isLoaded": true,
   "hedaer": {
-    "searchBarPlaceholder": "جستجو با نام خواننده، گالری، استایل، تم، تگ و ..."
+    "searchBarPlaceholder": "جستجو با نام خواننده، گالری، استایل، تم، تگ و ...",
+    "searchBarPlaceholderMobile": "جستجو در Hoodan"
   },
   "bottomHeader": {
     "whatsnew": "اخبار جدید",

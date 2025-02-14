@@ -1,7 +1,8 @@
 {
   "isLoaded": true,
   "hedaer": {
-    "searchBarPlaceholder": "Search by artist, gallery, style, theme, tag, etc."
+    "searchBarPlaceholder": "Search by artist, gallery, style, theme, tag, etc.",
+    "searchBarPlaceholderMobile": "Search Hoodan"
   },
   "bottomHeader": {
     "whatsnew": "What's New",
