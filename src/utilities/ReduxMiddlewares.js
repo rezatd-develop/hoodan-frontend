@@ -12,7 +12,7 @@ export default function ReduxMiddlewares({ t, lang, children }) {
             dispatch(setDictionary(t));
         };
         loadDictionary();
-    }, [lang, dispatch]);
+    }, [lang]);
 
     return children;
 }

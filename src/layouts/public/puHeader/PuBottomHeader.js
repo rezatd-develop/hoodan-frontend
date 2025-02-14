@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
-export default function PuBottomHeader(props) {
+export default function PuBottomHeader() {
     const t = useSelector((state) => state.dictionary.t);
 
     const navLinks = [

@@ -14,23 +14,12 @@ import { isMobile } from '../../../utilities/CommonHelper';
 export default function PuTopHeader() {
     const t = useSelector((state) => state.dictionary.t);
     const [menuOpen, setMenuOpen] = useState(false);
-    const [menuHistory, setMenuHistory] = useState([]);
     const [activeMenu, setActiveMenu] = useState(null);
 
     const handleMenuNavigation = (menu) => {
         if (!menu) return;
-        setMenuHistory(prev => [...prev, activeMenu]); // Store current menu
         setActiveMenu(menu); // Set new active menu
-    };
-    
-    const handleBack = () => {
-        setMenuHistory(prev => {
-            const newHistory = [...prev];
-            const lastMenu = newHistory.pop() || null;
-            setActiveMenu(lastMenu); // Restore previous menu
-            return newHistory;
-        });
-    };    
+    }; 
 
     const mobileNavLinks = [
         {
@@ -145,7 +134,6 @@ export default function PuTopHeader() {
                         <button className="close-btn" onClick={() => {
                             setMenuOpen(false);
                             setActiveMenu(null);
-                            setMenuHistory([]);
                         }}>&times;</button>
                         
                         <div className="menu-container">
@@ -158,7 +146,6 @@ export default function PuTopHeader() {
                     {menuOpen && <div className="mobile-menu-overlay" onClick={() => {
                         setMenuOpen(false);
                         setActiveMenu(null);
-                        setMenuHistory([]);
                     }}></div>}
                 </>
             )}
