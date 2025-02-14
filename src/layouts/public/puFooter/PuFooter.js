@@ -1,3 +1,3 @@
 export default function PuFooter() {
-  return ;
+  return <div>...</div>;
 }
