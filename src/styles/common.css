@@ -172,3 +172,11 @@ html {
 	border-radius: 15px;
 	font-size: 14px;
 }
+
+.black-text {
+	color: black;
+}
+
+.blue-hover:hover {
+	color: blue;
+}

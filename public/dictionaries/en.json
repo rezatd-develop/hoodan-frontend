@@ -3,6 +3,17 @@
   "hedaer": {
     "searchBarPlaceholder": "Search by artist, gallery, style, theme, tag, etc."
   },
+  "bottomHeader": {
+    "whatsnew": "What's New",
+    "artists": "Artists",
+    "artworks": "Artworks",
+    "auctions": "Auctions",
+    "viewingRooms": "Viewin Rooms",
+    "galleries": "Galleries",
+    "fairsAndEvents": "Fairs And Events",
+    "shows": "Shows",
+    "museums": "Museums"
+  },
   "common": {
     "buy": "Buy",
     "priceDatabase": "Price Database",

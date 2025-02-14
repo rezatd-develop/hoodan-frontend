@@ -3,6 +3,17 @@
   "hedaer": {
     "searchBarPlaceholder": "جستجو با نام خواننده، گالری، استایل، تم، تگ و ..."
   },
+  "bottomHeader": {
+    "whatsnew": "اخبار جدید",
+    "artists": "هنرمندان",
+    "artworks": "کار های هنری",
+    "auctions": "حراج ها",
+    "viewingRooms": "نمایشگاه ها",
+    "galleries": "گالری ها",
+    "fairsAndEvents": "رویداد ها",
+    "shows": "شو ها",
+    "museums": "موزه ها"
+  },
   "common": {
     "buy": "خرید",
     "priceDatabase": "دیتابیس قیمت",
