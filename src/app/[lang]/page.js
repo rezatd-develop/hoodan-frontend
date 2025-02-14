@@ -1,10 +1,11 @@
 import '../../styles/common.css';
+import { getDictionary } from '../[lang]/dictionaries';
 import App from './App';
 
-export default function Home({ params }) {
+export default async function Home({ params }) {
+  const t = await getDictionary(params?.lang);
+
   return (
-    <div>
-        <App params={params} />
-    </div>
+    <App params={params} t={t} lang={params?.lang} />
   );
 }

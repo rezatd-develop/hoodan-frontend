@@ -1,9 +1,14 @@
+'use client'
+
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../media/images/company/logo.png";
 import HoTextInput from "../../../components/input/HoTextInput";
+import { useSelector } from "react-redux";
 
 export default function PuHeader() {
+  const t = useSelector((state) => state.dictionary.t);
+console.log('***t',t)
   return (
     <nav className="navbar navbar-expand-lg px-4">
       <div className="container-fluid">
