@@ -8,40 +8,42 @@ import HoTextInput from "../../../components/input/HoTextInput";
 import logo from "../../../media/images/company/logo.png";
 import HoPrimaryButton from '../../../components/button/HoPrimaryButton';
 import HoSecondaryButton from '../../../components/button/HoSecondaryButton';
-import { isMobile } from '../../../utilities/CommonHelper';
+import { useIsMobile } from '../../../utilities/CommonHelper';
 // import './PuTopHeader.css';
 
 export default function PuTopHeader() {
     const t = useSelector((state) => state.dictionary.t);
     const [menuOpen, setMenuOpen] = useState(false);
     const [activeMenu, setActiveMenu] = useState(null);
+    const isMobile = useIsMobile();
+
 
     const handleMenuNavigation = (menu) => {
         if (!menu) return;
         setActiveMenu(menu); // Set new active menu
-    }; 
+    };
 
     const mobileNavLinks = [
         {
-            id: 1, 
-            label: t?.bottomHeader?.whatsnew, 
-            href: '/', 
+            id: 1,
+            label: t?.bottomHeader?.whatsnew,
+            href: '/',
             children: [
                 { id: 11, label: t?.bottomHeader?.whatsnew, href: '/' }
             ]
         },
         {
-            id: 2, 
-            label: t?.bottomHeader?.artists, 
-            href: '/', 
+            id: 2,
+            label: t?.bottomHeader?.artists,
+            href: '/',
             children: [
                 { id: 22, label: t?.bottomHeader?.whatsnew, href: '/' }
             ]
         },
         {
-            id: 3, 
-            label: t?.bottomHeader?.artworks, 
-            href: '/', 
+            id: 3,
+            label: t?.bottomHeader?.artworks,
+            href: '/',
             children: [
                 { id: 33, label: t?.bottomHeader?.whatsnew, href: '/' }
             ]
@@ -58,18 +60,18 @@ export default function PuTopHeader() {
         { id: 1, label: t?.common?.buy, href: '/' },
         { id: 2, label: t?.common?.priceDatabase, href: '/' },
         { id: 3, label: t?.common?.editorial, href: '/' },
-        ...(isMobile() ? mobileNavLinks : []),
+        ...(isMobile ? mobileNavLinks : []),
     ];
 
     const renderMenu = (menuItems, isSubmenu = false) => (
         <div className={`menu-panel ${isSubmenu ? 'submenu active' : ''}`}>
-    
+
             {isSubmenu && (
                 <button className="back-button" onClick={handleBack}>
                     ← Back
                 </button>
             )}
-            
+
             {menuItems.map(item => (
                 <div key={item.id} className="menu-item">
                     {item.children ? (
@@ -78,9 +80,9 @@ export default function PuTopHeader() {
                             <span className="arrow">→</span>
                         </div>
                     ) : (
-                        <Link 
-                            className="mobile-menu-item" 
-                            href={item.href} 
+                        <Link
+                            className="mobile-menu-item"
+                            href={item.href}
                             onClick={() => setMenuOpen(false)}
                         >
                             {item.label}
@@ -88,7 +90,7 @@ export default function PuTopHeader() {
                     )}
                 </div>
             ))}
-            
+
             {!isSubmenu && (
                 <div className="auth-buttons">
                     <HoSecondaryButton className='w-100 mt-3'>{t?.common?.login}</HoSecondaryButton>
@@ -99,17 +101,17 @@ export default function PuTopHeader() {
     );
 
     return (
-        <nav className="container-fluid d-flex align-items-center px-lg-4 px-md-4 px-sm-3 px-3 py-0">
+        <div className="container-fluid d-flex align-items-center px-lg-4 px-md-4 px-sm-3 px-3 py-0">
             <Link className="navbar-brand" href="/">
                 <Image src={logo} alt="hoodan logo" width={40} height={40} />
             </Link>
 
             <HoTextInput
-                placeholder={isMobile() ? t?.hedaer?.searchBarPlaceholderMobile : t?.hedaer?.searchBarPlaceholder}
+                placeholder={isMobile ? t?.hedaer?.searchBarPlaceholderMobile : t?.hedaer?.searchBarPlaceholder}
                 className='w-100 me-3 search-icon'
             />
 
-            {!isMobile() ? (
+            {!isMobile ? (
                 <div className="me-auto mb-2 mb-lg-0 d-flex align-items-center flex-nowrap">
                     {navLinks.map(item => (
                         <Link
@@ -135,7 +137,7 @@ export default function PuTopHeader() {
                             setMenuOpen(false);
                             setActiveMenu(null);
                         }}>&times;</button>
-                        
+
                         <div className="menu-container">
                             {renderMenu(navLinks)}
                             {activeMenu && renderMenu(activeMenu, true)}
@@ -149,6 +151,6 @@ export default function PuTopHeader() {
                     }}></div>}
                 </>
             )}
-        </nav>
+        </div>
     );
 }

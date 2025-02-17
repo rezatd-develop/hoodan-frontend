@@ -18,7 +18,7 @@ export default function PuBottomHeader() {
         { id: 9, label: t?.bottomHeader?.museums, href: '/' },
     ]
 
-    return <div className="container-fluid px-5 py-3">
+    return <div className="container-fluid px-5 py-3 line-height-1">
         {navLinks?.map(item =>
             <Link
                 className="text-decoration-none me-4 blue-hover black-text"

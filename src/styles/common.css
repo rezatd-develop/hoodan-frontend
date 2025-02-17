@@ -109,7 +109,7 @@ section {
 }
 
 body {
-	line-height: 1;
+	line-height: normal;
 }
 
 ol,
@@ -170,7 +170,7 @@ html {
 	color: black;
 	background-color: white;
 	border-width: 1px;
-	border-radius: 15px;
+	border-radius: 100px;
 	font-size: 14px;
 }
 
@@ -180,4 +180,16 @@ html {
 
 .blue-hover:hover {
 	color: blue;
+}
+
+.font-size-40 {
+	font-size: 40px;
+}
+
+.font-size-23 {
+	font-size: 23px;
+}
+
+.line-height-1 {
+	line-height: 1;
 }
