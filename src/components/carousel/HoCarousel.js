@@ -28,6 +28,7 @@ export default function HoCarousel(props) {
                     .filter(item => item)
             }
             className="mySwiper"
+            onSlideChange={props?.onSlideChange}
         >
             {props?.slides?.length > 0 &&
                 props?.slides?.map((item, index) => (

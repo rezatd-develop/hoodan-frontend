@@ -190,6 +190,24 @@ html {
 	font-size: 23px;
 }
 
+.font-size-15 {
+	font-size: 15px;
+}
+
 .line-height-1 {
 	line-height: 1;
+}
+
+.background-light-gray {
+	background-color: #f7f7f7;
+}
+
+.slider-progress-line {
+	height: 10px;
+	border-bottom: 1px solid rgb(170, 170, 170);
+}
+
+.active-slider-progress-line {
+	height: 10px;
+	border-bottom: 1px solid rgb(0, 0, 0);
 }
