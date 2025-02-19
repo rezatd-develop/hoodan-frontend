@@ -34,9 +34,8 @@ export default function HomeMainCarousel() {
     ];
 
     const onSlideChange = (data) => { setActiveSlideIndex(data?.activeIndex) }
-    console.log('***activeSlideIndex', activeSlideIndex);
 
-    return <>
+    return <div className='mb-5'>
         <HoCarousel
             onSlideChange={onSlideChange}
             slides={slidesData?.map((item) => (
@@ -51,5 +50,5 @@ export default function HomeMainCarousel() {
             <div className={clsx(activeSlideIndex === 1 ? 'active-slider-progress-line' : 'slider-progress-line', 'col')}></div>
             <div className={clsx(activeSlideIndex === 2 ? 'active-slider-progress-line' : 'slider-progress-line', 'col')}></div>
         </div>
-    </>
+    </div>
 }
