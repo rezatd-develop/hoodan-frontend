@@ -1,18 +1,28 @@
 'use client'
 
 import clsx from 'clsx';
-import HoBlogCard from '../../../components/card/HoBlogCard';
 import { useIsMobile } from '@/utilities/CommonHelper';
+import HoContentCard from '../../../components/card/HoContentCard';
 
 export default function HomeContentRow(props) {
     const isMobile = useIsMobile();
-    let showColumnMode = isMobile && props?.showColumnMode;
 
-    return <div className="px-lg-5 px-md-5 px-sm-4 px-4">
-        <div className="font-size-26 mb-4">Featured</div>
-        <div className={clsx(showColumnMode && "flex-column", "d-flex row")}>
-            <HoBlogCard containerClassName='col-3' description='Hoodan editorial' title='11 Must-See Shows during Frieze Los Angeles' />
-            <HoBlogCard containerClassName='col-3' description='Hoodan editorial' title='11 Must-See Shows during Frieze Los Angeles' />
-        </div>
-    </div>
+    return (
+        <div className="px-lg-5 px-md-5 px-sm-4 px-4">
+            <div className="font-size-26">{props?.title}</div>
+            <div className="font-size-26 mb-4 text-secondary">{props?.description}</div>
+            <div className='d-flex row flex-nowrap overflow-auto'>
+
+                {props?.contents?.length > 0 && props?.contents?.map((content) => (
+                    <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-3','mb-5')}
+                        key={content?.id}
+                        img={content?.img}
+                        description={content?.description}
+                        title={content?.title}
+                        secondDescription={content?.secondDescription}
+                        price={content?.price}
+                    />
+                ))}
+            </div>
+        </div>)
 }

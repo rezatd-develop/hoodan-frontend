@@ -1,10 +1,17 @@
 import HomeMainCarousel from './HomeMainCarousel';
-import HomeContentRow from './HomeContentRow';
-import '../../../styles/view/home/home.css'
+import HomeClassesRow from './HomeClassesRow';
+import HomeBooksRow from './HomeBooksRow';
+import HomeArtItemsGrid from './HomeArtItemsGrid';
+import HomeBannerSection from './HomeBannerSection';
+import '../../../styles/view/home/home.css';
+
 
 export default function Home() {
     return <>
         <HomeMainCarousel />
-        <HomeContentRow />
+        <HomeClassesRow />
+        <HomeBooksRow />
+        <HomeArtItemsGrid />
+        <HomeBannerSection />
     </>
 };
