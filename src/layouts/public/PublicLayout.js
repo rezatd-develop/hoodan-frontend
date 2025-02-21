@@ -1,4 +1,6 @@
 import PuHeader from "../../layouts/public/puHeader/PuHeader";
+import PuFooter from './puFooter/PuFooter';
+import PuCopyRight from './PuCopyRight';
 import '../../styles/layout/public/public.css';
 
 export default function PublicLayout({ children }) {
@@ -7,6 +9,8 @@ export default function PublicLayout({ children }) {
     <div>
       <PuHeader />
       {children}
+      <PuFooter />
+      <PuCopyRight />
     </div>
   );
 }

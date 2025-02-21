@@ -8,7 +8,7 @@ export default function HomeContentRow(props) {
     const isMobile = useIsMobile();
 
     return (
-        <div className="px-lg-5 px-md-5 px-sm-4 px-4">
+        <div className={clsx(props?.className || "px-lg-5 px-md-5 px-sm-4 px-4")}>
             <div className="font-size-26">{props?.title}</div>
             <div className="font-size-26 mb-4 text-secondary">{props?.description}</div>
             <div className='d-flex row flex-nowrap overflow-auto'>
