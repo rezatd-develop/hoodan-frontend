@@ -1,10 +1,9 @@
-'use client'
+'use client';
 
+import React from 'react';
+import AspectRatio from '@mui/joy/AspectRatio';
 
-import * as React from 'react';
-import AspectRatio, { AspectRatioProps } from '@mui/joy/AspectRatio';
-
-export default function MuiLogo(props: AspectRatioProps) {
+export default function MuiLogo(props) {
   const { sx, ...other } = props;
   return (
     <AspectRatio

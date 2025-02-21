@@ -1,7 +1,6 @@
-'use client'
+'use client';
 
-
-import * as React from 'react';
+import React from 'react';
 import GlobalStyles from '@mui/joy/GlobalStyles';
 import Sheet from '@mui/joy/Sheet';
 import IconButton from '@mui/joy/IconButton';
@@ -39,7 +38,7 @@ export default function Header() {
         })}
       />
       <IconButton
-        onClick={() => toggleSidebar()}
+        onClick={toggleSidebar}
         variant="outlined"
         color="neutral"
         size="sm"

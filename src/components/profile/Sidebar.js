@@ -35,21 +35,10 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ColorSchemeToggle from './ColorSchemeToggle';
 import { closeSidebar } from '../../utilities/profile/utils';
 
-function Toggler({
-  defaultExpanded = false,
-  renderToggle,
-  children,
-}: {
-  defaultExpanded?: boolean;
-  children: React.ReactNode;
-  renderToggle: (params: {
-    open: boolean;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  }) => React.ReactNode;
-}) {
+function Toggler({ defaultExpanded = false, renderToggle, children }) {
   const [open, setOpen] = React.useState(defaultExpanded);
   return (
-    <React.Fragment>
+    <>
       {renderToggle({ open, setOpen })}
       <Box
         sx={[
@@ -65,7 +54,7 @@ function Toggler({
       >
         {children}
       </Box>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -127,7 +116,7 @@ export default function Sidebar() {
           <BrightnessAutoRoundedIcon />
         </IconButton>
         <Typography level="title-lg">Acme Co.</Typography>
-        <ColorSchemeToggle sx={{ ml: 'auto' }} />
+        {/* <ColorSchemeToggle sx={{ ml: 'auto' }} /> */}
       </Box>
       <Input size="sm" startDecorator={<SearchRoundedIcon />} placeholder="Search" />
       <Box
@@ -151,24 +140,6 @@ export default function Sidebar() {
           }}
         >
           <ListItem>
-            <ListItemButton>
-              <HomeRoundedIcon />
-              <ListItemContent>
-                <Typography level="title-sm">Home</Typography>
-              </ListItemContent>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
-            <ListItemButton>
-              <DashboardRoundedIcon />
-              <ListItemContent>
-                <Typography level="title-sm">Dashboard</Typography>
-              </ListItemContent>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
             <ListItemButton selected>
               <ShoppingCartRoundedIcon />
               <ListItemContent>
@@ -177,7 +148,7 @@ export default function Sidebar() {
             </ListItemButton>
           </ListItem>
 
-          <ListItem nested>
+          {/* <ListItem nested>
             <Toggler
               renderToggle={({ open, setOpen }) => (
                 <ListItemButton onClick={() => setOpen(!open)}>
@@ -188,12 +159,8 @@ export default function Sidebar() {
                   <KeyboardArrowDownIcon
                     sx={[
                       open
-                        ? {
-                            transform: 'rotate(180deg)',
-                          }
-                        : {
-                            transform: 'none',
-                          },
+                        ? { transform: 'rotate(180deg)' }
+                        : { transform: 'none' },
                     ]}
                   />
                 </ListItemButton>
@@ -241,12 +208,8 @@ export default function Sidebar() {
                   <KeyboardArrowDownIcon
                     sx={[
                       open
-                        ? {
-                            transform: 'rotate(180deg)',
-                          }
-                        : {
-                            transform: 'none',
-                          },
+                        ? { transform: 'rotate(180deg)' }
+                        : { transform: 'none' },
                     ]}
                   />
                 </ListItemButton>
@@ -270,7 +233,7 @@ export default function Sidebar() {
                 </ListItem>
               </List>
             </Toggler>
-          </ListItem>
+          </ListItem> */}
         </List>
         <List
           size="sm"
@@ -282,7 +245,7 @@ export default function Sidebar() {
             mb: 2,
           }}
         >
-          <ListItem>
+          {/* <ListItem>
             <ListItemButton>
               <SupportRoundedIcon />
               Support
@@ -293,9 +256,9 @@ export default function Sidebar() {
               <SettingsRoundedIcon />
               Settings
             </ListItemButton>
-          </ListItem>
+          </ListItem> */}
         </List>
-        <Card
+        {/* <Card
           invertedColors
           variant="soft"
           color="warning"
@@ -318,7 +281,7 @@ export default function Sidebar() {
           <Button size="sm" variant="solid">
             Upgrade plan
           </Button>
-        </Card>
+        </Card> */}
       </Box>
       <Divider />
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
