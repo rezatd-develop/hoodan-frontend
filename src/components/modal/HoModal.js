@@ -24,9 +24,6 @@ export default function HoModal(props) {
 
     return (
         <React.Fragment>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Open dialog
-            </Button>
             <Dialog
                 onClose={handleClose}
                 aria-labelledby="customized-dialog-title"

@@ -55,7 +55,7 @@ export default function HomeArtItemsGrid() {
         <div className="font-size-26 mb-4 text-secondary">Recent Art Pics</div>
         <div className="row mx-0">
             {isMobile ?
-                <div className="d-flex flex-nowrap row gap-4">
+                <div className="d-flex flex-nowrap row gap-4 overflow-hidden">
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5 px-0')}
                         key={contents[0]?.id}
                         img={contents[0]?.img}
