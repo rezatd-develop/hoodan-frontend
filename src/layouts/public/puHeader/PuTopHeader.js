@@ -62,7 +62,7 @@ export default function PuTopHeader(props) {
     ];
 
     const navLinks = [
-       
+
         ...(isMobile ? mobileNavLinks : []),
     ];
 

@@ -41,7 +41,7 @@ export const PostRequest = (apiUrl, data, callback) => {
         })
         .catch((error) => {
             console.error('POST request error:', error);
-            callback(null, error);
+            callback(error.response.data);
         });
 };
 

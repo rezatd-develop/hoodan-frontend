@@ -20,10 +20,16 @@ export default function HoModal(props) {
     };
     const handleClose = () => {
         setOpen(false);
+        props?.modalClosed()
     };
+
+    React.useEffect(() => {
+        setOpen(props?.open)
+    }, [props?.open])
 
     return (
         <React.Fragment>
+            {console.log('***open', open)}
             <Dialog
                 onClose={handleClose}
                 aria-labelledby="customized-dialog-title"

@@ -7,28 +7,38 @@ import logoImg from '../../../media/images/company/logo.png';
 import SigningModalPhoneNumber from './SigningModalPhoneNumber';
 import SigningModalSignUpForm from './SigningModalSignUpForm';
 import SigningModalOtp from './SigningModalOtp';
+import HoMessageClassModal from '../../../components/modal/HoMessageClassModal'
 import { SendPhoneAuthService, SendOTPAuthService, SendRegisterAuthService } from "../../../services/Api's/public/auth/publicAuthApiRoutes";
 
 export default function SigningModal(props) {
     const [signingStep, setSigningStep] = useState(1);
     const [phoneNumber, setPhoneNumber] = useState(null);
     const [otp, setOtp] = useState(null);
+    const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const toggleErrorMessageModal = (message) => {
+        setErrorMessage(message)
+        setShowErrorMessage(true);
+    }
 
     const sendPhoneAuth = (data) => {
         let requestBody = {
             phone: data
         }
-        SendPhoneAuthService(requestBody, (data) => data.hasError === false && setSigningStep(2))
+        SendPhoneAuthService(requestBody, (data) => data.hasError ? toggleErrorMessageModal(data?.message) : setSigningStep(2))
     }
 
     const sendOTPAuthCallback = (data) => {
         if (!data.hasError) {
             if (data?.continueToSignUp) {
-                setSigningStep(3)
+                // toggleErrorMessageModal(data?.message);
+                setSigningStep(3);
             } else {
-                props?.closeModal()
+                toggleErrorMessageModal(data?.message);
+                setTimeout(() => props?.closeModal(), 2000)
             }
-        }
+        } else toggleErrorMessageModal(data?.message)
     }
 
     const verifyOtp = (data) => {
@@ -45,7 +55,10 @@ export default function SigningModal(props) {
             lastName: data?.lastName,
             phone: phoneNumber
         };
-        SendRegisterAuthService(bodyRequest, (data) => data.hasError === false && props?.closeModal())
+        SendRegisterAuthService(bodyRequest, (data) => {
+            toggleErrorMessageModal(data?.message);
+            setTimeout(() => props?.closeModal(), 2000)
+        })
     }
 
     const nextButtonClicked = (data, currentSigningStep) => {
@@ -65,15 +78,24 @@ export default function SigningModal(props) {
     }
 
     return (
-        <HoModal maxWidth='xs'
-            open={props?.open}
-            dialogTitleClassName='d-flex justify-content-center'
-            title={<Image src={logoImg} width={50} />}>
-            {signingStep === 1
-                ? <SigningModalPhoneNumber nextButtonClicked={nextButtonClicked} />
-                : signingStep === 2
-                    ? <SigningModalOtp nextButtonClicked={nextButtonClicked} />
-                    : <SigningModalSignUpForm nextButtonClicked={nextButtonClicked} />}
-        </HoModal>
+        <>
+            <HoModal maxWidth='xs'
+                open={props?.open}
+                dialogTitleClassName='d-flex justify-content-center'
+                title={<Image src={logoImg} width={50} />}>
+                {signingStep === 1
+                    ? <SigningModalPhoneNumber nextButtonClicked={nextButtonClicked} />
+                    : signingStep === 2
+                        ? <SigningModalOtp nextButtonClicked={nextButtonClicked} />
+                        : <SigningModalSignUpForm nextButtonClicked={nextButtonClicked} />}
+            </HoModal>
+            {
+                showErrorMessage &&
+                <HoMessageClassModal open={showErrorMessage}
+                    modalClosed={() => setShowErrorMessage(false)}>
+                    {errorMessage}
+                </HoMessageClassModal>
+            }
+        </>
     )
 }
