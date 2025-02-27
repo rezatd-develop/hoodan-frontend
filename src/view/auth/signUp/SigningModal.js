@@ -32,11 +32,11 @@ export default function SigningModal(props) {
     const sendOTPAuthCallback = (data) => {
         if (!data.hasError) {
             if (data?.continueToSignUp) {
-                // toggleErrorMessageModal(data?.message);
                 setSigningStep(3);
             } else {
                 toggleErrorMessageModal(data?.message);
-                setTimeout(() => props?.closeModal(), 2000)
+                setTimeout(() => props?.closeModal(), 2000);
+                localStorage.setItem('token', data?.data?.token);
             }
         } else toggleErrorMessageModal(data?.message)
     }

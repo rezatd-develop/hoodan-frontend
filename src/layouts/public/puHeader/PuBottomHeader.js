@@ -7,15 +7,10 @@ export default function PuBottomHeader() {
     const t = useSelector((state) => state.dictionary.t);
 
     const navLinks = [
-        { id: 1, label: t?.bottomHeader?.whatsnew, href: '/' },
-        { id: 2, label: t?.bottomHeader?.artists, href: '/' },
-        { id: 3, label: t?.bottomHeader?.artworks, href: '/' },
-        { id: 4, label: t?.bottomHeader?.auctions, href: '/' },
-        { id: 5, label: t?.bottomHeader?.viewingRooms, href: '/' },
-        { id: 6, label: t?.bottomHeader?.galleries, href: '/' },
-        { id: 7, label: t?.bottomHeader?.fairsAndEvents, href: '/' },
-        { id: 8, label: t?.bottomHeader?.shows, href: '/' },
-        { id: 9, label: t?.bottomHeader?.museums, href: '/' },
+        { id: 4, label: 'Classes', href: '/classes' },
+        { id: 5, label: 'Books', href: '/books' },
+        { id: 6, label: 'Art Items', href: '/artItems' },
+        { id: 7, label: 'Articles', href: '/articles' },
     ]
 
     return <div className="container-fluid px-5 py-3 line-height-1">

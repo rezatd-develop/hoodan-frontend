@@ -10,6 +10,7 @@ import HoPrimaryButton from '../../../components/button/HoPrimaryButton';
 import HoSecondaryButton from '../../../components/button/HoSecondaryButton';
 import { useIsMobile } from '../../../utilities/CommonHelper';
 import SigningModal from '../../../view/auth/signUp/SigningModal';
+import { useRouter } from "next/navigation";
 
 
 export default function PuTopHeader(props) {
@@ -18,6 +19,8 @@ export default function PuTopHeader(props) {
     const [activeMenu, setActiveMenu] = useState(null);
     const isMobile = useIsMobile();
     const [showSigningModal, setShowSigningModal] = useState(false);
+    const [searchText, setSearchText] = useState('')
+    const isSignedIn = localStorage.getItem('token')
 
 
     const handleMenuNavigation = (menu) => {
@@ -29,36 +32,10 @@ export default function PuTopHeader(props) {
     const closeModal = () => setShowSigningModal(false);
 
     const mobileNavLinks = [
-        {
-            id: 1,
-            label: t?.bottomHeader?.whatsnew,
-            href: '/',
-            children: [
-                { id: 11, label: t?.bottomHeader?.whatsnew, href: '/' }
-            ]
-        },
-        {
-            id: 2,
-            label: t?.bottomHeader?.artists,
-            href: '/',
-            children: [
-                { id: 22, label: t?.bottomHeader?.whatsnew, href: '/' }
-            ]
-        },
-        {
-            id: 3,
-            label: t?.bottomHeader?.artworks,
-            href: '/',
-            children: [
-                { id: 33, label: t?.bottomHeader?.whatsnew, href: '/' }
-            ]
-        },
-        { id: 4, label: t?.bottomHeader?.auctions, href: '/' },
-        { id: 5, label: t?.bottomHeader?.viewingRooms, href: '/' },
-        { id: 6, label: t?.bottomHeader?.galleries, href: '/' },
-        { id: 7, label: t?.bottomHeader?.fairsAndEvents, href: '/' },
-        { id: 8, label: t?.bottomHeader?.shows, href: '/' },
-        { id: 9, label: t?.bottomHeader?.museums, href: '/' },
+        { id: 4, label: 'Classes', href: '/classes' },
+        { id: 5, label: 'Books', href: '/Books' },
+        { id: 6, label: 'Art Items', href: '/ArtItems' },
+        { id: 7, label: 'Articles', href: '/articles' },
     ];
 
     const navLinks = [
@@ -94,14 +71,32 @@ export default function PuTopHeader(props) {
                 </div>
             ))}
 
-            {!isSubmenu && (
+            {!isSubmenu &&
+                isSignedIn ?
                 <div className="auth-buttons">
-                    <HoSecondaryButton onClick={toggleShowSigningModal} className='w-100 mt-3'>{t?.common?.login}</HoSecondaryButton>
-                    <HoPrimaryButton onClick={toggleShowSigningModal} className='w-100 mt-2'>{t?.common?.signUp}</HoPrimaryButton>
+                    <Link href='/profile'>
+                        <HoSecondaryButton onClick={toggleShowSigningModal} className='w-100 mt-3'>Profile</HoSecondaryButton>
+                    </Link>
+                    <Link href='/cart'>
+                        <HoPrimaryButton onClick={toggleShowSigningModal} className='w-100 mt-2'>Cart</HoPrimaryButton>
+                    </Link>
                 </div>
-            )}
+                : (
+                    <div className="auth-buttons">
+                        <HoSecondaryButton onClick={toggleShowSigningModal} className='w-100 mt-3'>{t?.common?.login}</HoSecondaryButton>
+                        <HoPrimaryButton onClick={toggleShowSigningModal} className='w-100 mt-2'>{t?.common?.signUp}</HoPrimaryButton>
+                    </div>
+                )}
+
         </div>
     );
+
+    const router = useRouter();
+    const searchBarEntered = (data) => {
+        if (data?.key === 'Enter') {
+            router.push(`/search/?searchText=${searchText}`)
+        }
+    }
 
     return (
         <div className="container-fluid d-flex align-items-center px-lg-4 px-md-4 px-sm-3 px-3 py-0">
@@ -110,6 +105,8 @@ export default function PuTopHeader(props) {
             </Link>
 
             <HoTextInput
+                onChange={(data) => setSearchText(data?.target?.value)}
+                onKeyDown={searchBarEntered}
                 placeholder={isMobile ? t?.hedaer?.searchBarPlaceholderMobile : t?.hedaer?.searchBarPlaceholder}
                 className='w-100 me-3 search-icon'
             />
@@ -126,8 +123,20 @@ export default function PuTopHeader(props) {
                         </Link>
                     ))}
 
-                    <HoSecondaryButton onClick={toggleShowSigningModal} className='ms-2'>{t?.common?.login}</HoSecondaryButton>
-                    <HoPrimaryButton onClick={toggleShowSigningModal} className='ms-2'>{t?.common?.signUp}</HoPrimaryButton>
+                    {isSignedIn
+                        ? <>
+                            <Link href='/profile'>
+                                <HoSecondaryButton className='ms-2'>Profile</HoSecondaryButton>
+                            </Link>
+                            <Link href='/cart'>
+                                <HoPrimaryButton className='ms-2'>Cart</HoPrimaryButton>
+                            </Link>
+                        </>
+                        : <>
+                            <HoSecondaryButton onClick={toggleShowSigningModal} className='ms-2'>{t?.common?.login}</HoSecondaryButton>
+                            <HoPrimaryButton onClick={toggleShowSigningModal} className='ms-2'>{t?.common?.signUp}</HoPrimaryButton>
+                        </>
+                    }
                 </div>
             ) : (
                 <>

@@ -3,7 +3,8 @@ export const apiRoutes = {
         auth: {
             phone: '/public/auth/phone',
             verify: '/public/auth/verify',
-            register: 'public/auth/register'
-        }
+            register: '/public/auth/register'
+        },
+        search: '/public/search'
     }
 }
