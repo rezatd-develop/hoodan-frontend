@@ -9,7 +9,6 @@ import logo from "../../../media/images/company/logo.png";
 import HoPrimaryButton from '../../../components/button/HoPrimaryButton';
 import HoSecondaryButton from '../../../components/button/HoSecondaryButton';
 import { useIsMobile } from '../../../utilities/CommonHelper';
-// import './PuTopHeader.css';
 
 export default function PuTopHeader() {
     const t = useSelector((state) => state.dictionary.t);
@@ -57,9 +56,7 @@ export default function PuTopHeader() {
     ];
 
     const navLinks = [
-        { id: 1, label: t?.common?.buy, href: '/' },
-        { id: 2, label: t?.common?.priceDatabase, href: '/' },
-        { id: 3, label: t?.common?.editorial, href: '/' },
+       
         ...(isMobile ? mobileNavLinks : []),
     ];
 

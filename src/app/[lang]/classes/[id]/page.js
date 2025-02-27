@@ -9,7 +9,7 @@ export default async function Class({ params }) {
 
   return (
     <App params={params} t={t} lang={params?.lang} >
-    <ClassPage />
+      <ClassPage />
     </App >
   );
 }

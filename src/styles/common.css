@@ -150,8 +150,30 @@ input[type="text"] {
 		url("../files/fonts/Unica77\ LL.woff")format("woff"),
 }
 
+@font-face {
+	font-family: "yekanBakh";
+	src: url("../files/fonts/B\ Yekan+.ttf");
+}
+
+@font-face {
+	font-family: "yekanBakhBold";
+	src: url("../files/fonts/B\ Yekan+\ Bold.ttf");
+}
+
 html {
+	font-family: "yekanBakhBold";
+}
+
+.unica-font {
 	font-family: "Unica77 LL";
+}
+
+.yekan-bakh-font {
+	font-family: "yekanBakh";
+}
+
+.yekan-bakh-bold-font {
+	font-family: "yekanBakhBold";
 }
 
 .white-space {

@@ -1,6 +1,6 @@
 import { getDictionary } from '../../../[lang]/dictionaries';
-import Home from '../../../../view/public/home/Home';
 import '../../../../styles/common.css';
+import Article from '../../../../view/public/article/ArticlePage'
 import App from './../../App';
 
 export default async function Article({ params }) {
@@ -8,7 +8,7 @@ export default async function Article({ params }) {
 
   return (
     <App params={params} t={t} lang={params?.lang} >
-    
+      <ArticlePage />
     </App >
   );
 }
