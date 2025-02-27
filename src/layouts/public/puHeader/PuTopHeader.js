@@ -9,18 +9,24 @@ import logo from "../../../media/images/company/logo.png";
 import HoPrimaryButton from '../../../components/button/HoPrimaryButton';
 import HoSecondaryButton from '../../../components/button/HoSecondaryButton';
 import { useIsMobile } from '../../../utilities/CommonHelper';
+import SigningModal from '../../../view/auth/signUp/SigningModal';
 
-export default function PuTopHeader() {
+
+export default function PuTopHeader(props) {
     const t = useSelector((state) => state.dictionary.t);
     const [menuOpen, setMenuOpen] = useState(false);
     const [activeMenu, setActiveMenu] = useState(null);
     const isMobile = useIsMobile();
+    const [showSigningModal, setShowSigningModal] = useState(false);
 
 
     const handleMenuNavigation = (menu) => {
         if (!menu) return;
-        setActiveMenu(menu); // Set new active menu
+        setActiveMenu(menu);
     };
+
+    const toggleShowSigningModal = () => setShowSigningModal(!showSigningModal);
+    const closeModal = () => setShowSigningModal(false);
 
     const mobileNavLinks = [
         {
@@ -90,8 +96,8 @@ export default function PuTopHeader() {
 
             {!isSubmenu && (
                 <div className="auth-buttons">
-                    <HoSecondaryButton className='w-100 mt-3'>{t?.common?.login}</HoSecondaryButton>
-                    <HoPrimaryButton className='w-100 mt-2'>{t?.common?.signUp}</HoPrimaryButton>
+                    <HoSecondaryButton onClick={toggleShowSigningModal} className='w-100 mt-3'>{t?.common?.login}</HoSecondaryButton>
+                    <HoPrimaryButton onClick={toggleShowSigningModal} className='w-100 mt-2'>{t?.common?.signUp}</HoPrimaryButton>
                 </div>
             )}
         </div>
@@ -120,8 +126,8 @@ export default function PuTopHeader() {
                         </Link>
                     ))}
 
-                    <HoSecondaryButton className='ms-2'>{t?.common?.login}</HoSecondaryButton>
-                    <HoPrimaryButton className='ms-2'>{t?.common?.signUp}</HoPrimaryButton>
+                    <HoSecondaryButton onClick={toggleShowSigningModal} className='ms-2'>{t?.common?.login}</HoSecondaryButton>
+                    <HoPrimaryButton onClick={toggleShowSigningModal} className='ms-2'>{t?.common?.signUp}</HoPrimaryButton>
                 </div>
             ) : (
                 <>
@@ -148,6 +154,11 @@ export default function PuTopHeader() {
                     }}></div>}
                 </>
             )}
+            {showSigningModal &&
+                <SigningModal open={true}
+                    closeModal={closeModal}
+                />
+            }
         </div>
     );
 }

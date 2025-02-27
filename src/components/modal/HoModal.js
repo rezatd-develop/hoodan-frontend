@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 
 export default function HoModal(props) {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(props?.open);
 
     const handleClickOpen = () => {
         setOpen(true);
