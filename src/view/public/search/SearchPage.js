@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import HoMessageClassModal from "@/components/modal/HoMessageClassModal";
 import HoArtItemCard from '../../../components/card/HoArtItemCard';
 import { useIsMobile } from "@/utilities/CommonHelper";
+import HoContentCard from "@/components/card/HoContentCard";
+import clsx from "clsx";
+import HomeContentRow from "../home/HomeContentRow";
 
 export default function SearchPage() {
     const searchParams = useSearchParams()
@@ -29,16 +32,8 @@ export default function SearchPage() {
     }
 
     return <div>
-        {searchedItems?.length > 0 ? searchedItems?.map((item, index) =>
-            <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-3', 'mb-5')}
-                key={index}
-                img={item?.images[0]}
-                description={item?.mainDescription}
-                title={item?.title}
-                secondDescription={item?.primaryDescription}
-                price={item?.price}
-            />
-        )
+        {searchedItems?.length > 0
+            ? <HomeContentRow description='' contents={searchedItems} />
             : <div className="text-center my-5">No Result</div>}
         {
             showMessageClassModal &&

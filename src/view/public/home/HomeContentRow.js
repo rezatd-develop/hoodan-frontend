@@ -16,7 +16,7 @@ export default function HomeContentRow(props) {
                 {props?.contents?.length > 0 && props?.contents?.map((content) => (
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-3','mb-5')}
                         key={content?.id}
-                        img={content?.img}
+                        img={content?.images[0]}
                         description={content?.description}
                         title={content?.title}
                         secondDescription={content?.secondDescription}
