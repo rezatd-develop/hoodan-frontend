@@ -6,7 +6,8 @@ import { GetPublicAllProductsService } from "../../../services/Api's/public/prod
 
 export default function HomeClassesRow() {
     const [contents, setContents] = useState([]);
-
+    const productTypeLabel = 'classes';
+    
     useEffect(() => {
         let params = {
             limit: 4,
@@ -21,7 +22,11 @@ export default function HomeClassesRow() {
     }
 
     return (<div className="mb-5">
-        <HomeContentRow scrollView title='Most Recent Classes' description='Find Most Recent Classes Here' contents={contents} />
+        <HomeContentRow scrollView
+            productTypeLabel={productTypeLabel}
+            title='Most Recent Classes'
+            description='Find Most Recent Classes Here'
+            contents={contents} />
     </div>
     )
 }

@@ -15,7 +15,7 @@ export default function HomeContentRow(props) {
 
                 {props?.contents?.length > 0 && props?.contents?.map((content) => (
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-3', 'mb-5 cursor-pointer')}
-                        href={`${props?.productTypeLabel || ""}/${String(content?.productId)}`}
+                        href={`${props?.productTypeLabel || ""}/${String(content?.productId || content?.id)}`}
                         key={content?.productId}
                         img={content?.images[0]}
                         description={content?.description}

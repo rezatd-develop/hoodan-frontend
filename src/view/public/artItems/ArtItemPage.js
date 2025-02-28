@@ -1,3 +1,5 @@
+import ProductItem from "../productItem/ProductItem";
+
 export default function ArtItemPage() {
-    return
+    return <ProductItem productType={3} />
 }

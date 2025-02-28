@@ -6,7 +6,7 @@ import { GetPublicAllProductsService } from "../../../services/Api's/public/prod
 
 export default function BooksPage() {
     const [contents, setContents] = useState([]);
-    const productTypeLabel = 'articles'
+    const productTypeLabel = 'books'
 
     useEffect(() => {
         let params = {

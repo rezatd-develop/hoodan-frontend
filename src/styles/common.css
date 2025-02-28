@@ -224,6 +224,10 @@ html {
 	line-height: 1;
 }
 
+.line-height-1-6 {
+	line-height: 1.6;
+}
+
 .background-light-gray {
 	background-color: #f7f7f7;
 }

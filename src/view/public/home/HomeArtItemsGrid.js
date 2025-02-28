@@ -10,6 +10,7 @@ import { GetPublicAllProductsService } from "@/services/Api's/public/products/pu
 export default function HomeArtItemsGrid() {
     const isMobile = useIsMobile();
     const [contents, setContents] = useState([]);
+    const productTypeLabel = 'artItems';
 
     useEffect(() => {
         let params = {
@@ -28,7 +29,7 @@ export default function HomeArtItemsGrid() {
         <div className="font-size-26">Art Picks</div>
         <div className="font-size-26 mb-4 text-secondary">Recent Art Pics</div>
         <div className="row mx-0">
-            {isMobile ?
+            {(isMobile && contents?.length > 0) ?
                 <div className="d-flex flex-nowrap row gap-4 overflow-hidden">
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5 px-0')}
                         key={contents[0]?.id}
@@ -37,6 +38,7 @@ export default function HomeArtItemsGrid() {
                         title={contents[0]?.title}
                         secondDescription={contents[0]?.secondDescription}
                         price={contents[0]?.price}
+                        href={`${productTypeLabel || ""}/${String(contents[0]?.productId)}`}
                     />
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5 px-0')}
                         key={contents[1]?.id}
@@ -45,6 +47,7 @@ export default function HomeArtItemsGrid() {
                         title={contents[1]?.title}
                         secondDescription={contents[1]?.secondDescription}
                         price={contents[1]?.price}
+                        href={`${productTypeLabel || ""}/${String(contents[1]?.productId)}`}
                     />
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5 px-0')}
                         key={contents[2]?.id}
@@ -53,6 +56,7 @@ export default function HomeArtItemsGrid() {
                         title={contents[2]?.title}
                         secondDescription={contents[2]?.secondDescription}
                         price={contents[2]?.price}
+                        href={`${productTypeLabel || ""}/${String(contents[2]?.productId)}`}
                     />
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5 px-0')}
                         key={contents[3]?.id}
@@ -61,6 +65,7 @@ export default function HomeArtItemsGrid() {
                         title={contents[3]?.title}
                         secondDescription={contents[3]?.secondDescription}
                         price={contents[3]?.price}
+                        href={`${productTypeLabel || ""}/${String(contents[3]?.productId)}`}
                     />
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5 px-0')}
                         key={contents[4]?.id}
@@ -69,9 +74,10 @@ export default function HomeArtItemsGrid() {
                         title={contents[4]?.title}
                         secondDescription={contents[4]?.secondDescription}
                         price={contents[4]?.price}
+                        href={`${productTypeLabel || ""}/${String(contents[4]?.productId)}`}
                     />
                 </div>
-                : <div className="row">
+                : contents?.length > 0 && <div className="row">
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5')}
                         key={contents[0]?.id}
                         img={contents[0]?.images[0]}
@@ -79,6 +85,7 @@ export default function HomeArtItemsGrid() {
                         title={contents[0]?.title}
                         secondDescription={contents[0]?.secondDescription}
                         price={contents[0]?.price}
+                        href={`${productTypeLabel || ""}/${String(contents[0]?.productId)}`}
                     />
                     <div className="col-6 row">
                         <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5')}
@@ -88,6 +95,7 @@ export default function HomeArtItemsGrid() {
                             title={contents[1]?.title}
                             secondDescription={contents[1]?.secondDescription}
                             price={contents[1]?.price}
+                            href={`${productTypeLabel || ""}/${String(contents[1]?.productId)}`}
                         />
                         <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5')}
                             key={contents[2]?.id}
@@ -96,6 +104,7 @@ export default function HomeArtItemsGrid() {
                             title={contents[2]?.title}
                             secondDescription={contents[2]?.secondDescription}
                             price={contents[2]?.price}
+                            href={`${productTypeLabel || ""}/${String(contents[2]?.productId)}`}
                         />
                         <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5')}
                             key={contents[3]?.id}
@@ -104,6 +113,7 @@ export default function HomeArtItemsGrid() {
                             title={contents[3]?.title}
                             secondDescription={contents[3]?.secondDescription}
                             price={contents[3]?.price}
+                            href={`${productTypeLabel || ""}/${String(contents[3]?.productId)}`}
                         />
                         <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5')}
                             key={contents[4]?.id}
@@ -112,6 +122,7 @@ export default function HomeArtItemsGrid() {
                             title={contents[4]?.title}
                             secondDescription={contents[4]?.secondDescription}
                             price={contents[4]?.price}
+                            href={`${productTypeLabel || ""}/${String(contents[4]?.productId)}`}
                         />
                     </div>
                 </div>

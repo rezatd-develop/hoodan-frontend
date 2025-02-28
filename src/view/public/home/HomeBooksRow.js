@@ -6,6 +6,7 @@ import { GetPublicAllProductsService } from "../../../services/Api's/public/prod
 
 export default function HomeBooksRow() {
     const [contents, setContents] = useState([]);
+    const productTypeLabel = 'books';
 
     useEffect(() => {
         let params = {
@@ -22,7 +23,11 @@ export default function HomeBooksRow() {
 
     return (
         <div className="mb-5 mt-5">
-            <HomeContentRow scrollView title='Most Recent Translated Books' description='' contents={contents} />
+            <HomeContentRow scrollView
+                title='Most Recent Translated Books'
+                description=''
+                contents={contents}
+                productTypeLabel={productTypeLabel} />
         </div>
     )
 }

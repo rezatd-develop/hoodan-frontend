@@ -12,11 +12,11 @@ export const apiRoutes = {
         },
         products: {
             getAllProducts: '/public/products',
-            getProductDetail: '/public/products/:id'
+            getProductDetail: '/public/products'
         },
         blogs: {
             getAllBlogs: '/public/blogs',
-            getBlogDetail: '/public/blogs/:id'
+            getBlogDetail: '/public/blogs'
         }
     }
 }
