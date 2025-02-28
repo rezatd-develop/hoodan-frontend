@@ -4,51 +4,25 @@ import HoContentCard from "@/components/card/HoContentCard";
 import { useIsMobile } from "@/utilities/CommonHelper";
 import blogSample from '../../../media/images/samples/blog_sample.webp'
 import clsx from "clsx";
+import { useEffect, useState } from "react";
+import { GetPublicAllProductsService } from "@/services/Api's/public/products/publicProductApiRoutes";
 
 export default function HomeArtItemsGrid() {
     const isMobile = useIsMobile();
-    const contents = [
-        {
-            id: 1,
-            img: blogSample,
-            description: 'Hoodan editorial',
-            title: '11 Must-See Shows during Frieze Los Angeles',
-            secondDescription: 'this is second description',
-            price: '$124.00',
-        },
-        {
-            id: 2,
-            img: blogSample,
-            description: 'Hoodan editorial',
-            title: '11 Must-See Shows during Frieze Los Angeles',
-            secondDescription: 'this is second description',
-            price: '$124.00',
-        },
-        {
-            id: 3,
-            img: blogSample,
-            description: 'Hoodan editorial',
-            title: '11 Must-See Shows during Frieze Los Angeles',
-            secondDescription: 'this is second description',
-            price: '$124.00',
-        },
-        {
-            id: 4,
-            img: blogSample,
-            description: 'Hoodan editorial',
-            title: '11 Must-See Shows during Frieze Los Angeles',
-            secondDescription: 'this is second description',
-            price: '$124.00',
-        },
-        {
-            id: 5,
-            img: blogSample,
-            description: 'Hoodan editorial',
-            title: '11 Must-See Shows during Frieze Los Angeles',
-            secondDescription: 'this is second description',
-            price: '$124.00',
-        },
-    ]
+    const [contents, setContents] = useState([]);
+
+    useEffect(() => {
+        let params = {
+            limit: 5,
+            productType: 2,
+        }
+        GetPublicAllProductsService(params, getPublicAllProductsCallback)
+    }, []);
+
+    const getPublicAllProductsCallback = (data) => {
+        if (data?.hasError) return;
+        setContents(data?.data)
+    }
 
     return <div className="px-lg-5 px-md-5 px-sm-4 px-4">
         <div className="font-size-26">Art Picks</div>
@@ -58,7 +32,7 @@ export default function HomeArtItemsGrid() {
                 <div className="d-flex flex-nowrap row gap-4 overflow-hidden">
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5 px-0')}
                         key={contents[0]?.id}
-                        img={contents[0]?.img}
+                        img={contents[0]?.images[0]}
                         description={contents[0]?.description}
                         title={contents[0]?.title}
                         secondDescription={contents[0]?.secondDescription}
@@ -66,7 +40,7 @@ export default function HomeArtItemsGrid() {
                     />
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5 px-0')}
                         key={contents[1]?.id}
-                        img={contents[1]?.img}
+                        img={contents[1]?.images[0]}
                         description={contents[1]?.description}
                         title={contents[1]?.title}
                         secondDescription={contents[1]?.secondDescription}
@@ -74,7 +48,7 @@ export default function HomeArtItemsGrid() {
                     />
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5 px-0')}
                         key={contents[2]?.id}
-                        img={contents[2]?.img}
+                        img={contents[2]?.images[0]}
                         description={contents[2]?.description}
                         title={contents[2]?.title}
                         secondDescription={contents[2]?.secondDescription}
@@ -82,7 +56,7 @@ export default function HomeArtItemsGrid() {
                     />
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5 px-0')}
                         key={contents[3]?.id}
-                        img={contents[3]?.img}
+                        img={contents[3]?.images[0]}
                         description={contents[3]?.description}
                         title={contents[3]?.title}
                         secondDescription={contents[3]?.secondDescription}
@@ -90,7 +64,7 @@ export default function HomeArtItemsGrid() {
                     />
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5 px-0')}
                         key={contents[4]?.id}
-                        img={contents[4]?.img}
+                        img={contents[4]?.images[0]}
                         description={contents[4]?.description}
                         title={contents[4]?.title}
                         secondDescription={contents[4]?.secondDescription}
@@ -100,7 +74,7 @@ export default function HomeArtItemsGrid() {
                 : <div className="row">
                     <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5')}
                         key={contents[0]?.id}
-                        img={contents[0]?.img}
+                        img={contents[0]?.images[0]}
                         description={contents[0]?.description}
                         title={contents[0]?.title}
                         secondDescription={contents[0]?.secondDescription}
@@ -109,7 +83,7 @@ export default function HomeArtItemsGrid() {
                     <div className="col-6 row">
                         <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5')}
                             key={contents[1]?.id}
-                            img={contents[1]?.img}
+                            img={contents[1]?.images[0]}
                             description={contents[1]?.description}
                             title={contents[1]?.title}
                             secondDescription={contents[1]?.secondDescription}
@@ -117,7 +91,7 @@ export default function HomeArtItemsGrid() {
                         />
                         <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5')}
                             key={contents[2]?.id}
-                            img={contents[2]?.img}
+                            img={contents[2]?.images[0]}
                             description={contents[2]?.description}
                             title={contents[2]?.title}
                             secondDescription={contents[2]?.secondDescription}
@@ -125,7 +99,7 @@ export default function HomeArtItemsGrid() {
                         />
                         <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5')}
                             key={contents[3]?.id}
-                            img={contents[3]?.img}
+                            img={contents[3]?.images[0]}
                             description={contents[3]?.description}
                             title={contents[3]?.title}
                             secondDescription={contents[3]?.secondDescription}
@@ -133,7 +107,7 @@ export default function HomeArtItemsGrid() {
                         />
                         <HoContentCard containerClassName={clsx(isMobile ? 'col-10' : 'col-6', 'mb-5')}
                             key={contents[4]?.id}
-                            img={contents[4]?.img}
+                            img={contents[4]?.images[0]}
                             description={contents[4]?.description}
                             title={contents[4]?.title}
                             secondDescription={contents[4]?.secondDescription}

@@ -1,41 +1,24 @@
+'use client'
+
 import HomeContentRow from "./HomeContentRow";
-import blogSample from '../../../media/images/samples/blog_sample.webp'
+import { useEffect, useState } from "react";
+import { GetPublicAllProductsService } from "../../../services/Api's/public/products/publicProductApiRoutes";
 
 export default function HomeBooksRow() {
-    const contents = [
-        {
-            id: 1,
-            img: blogSample,
-            description: 'Hoodan editorial',
-            title: '11 Must-See Shows during Frieze Los Angeles',
-            secondDescription: 'this is second description',
-            price: '$124.00',
-        },
-        {
-            id: 2,
-            img: blogSample,
-            description: 'Hoodan editorial',
-            title: '11 Must-See Shows during Frieze Los Angeles',
-            secondDescription: 'this is second description',
-            price: '$124.00',
-        },
-        {
-            id: 3,
-            img: blogSample,
-            description: 'Hoodan editorial',
-            title: '11 Must-See Shows during Frieze Los Angeles',
-            secondDescription: 'this is second description',
-            price: '$124.00',
-        },
-        {
-            id: 4,
-            img: blogSample,
-            description: 'Hoodan editorial',
-            title: '11 Must-See Shows during Frieze Los Angeles',
-            secondDescription: 'this is second description',
-            price: '$124.00',
-        },
-    ]
+    const [contents, setContents] = useState([]);
+
+    useEffect(() => {
+        let params = {
+            limit: 4,
+            productType: 2,
+        }
+        GetPublicAllProductsService(params, getPublicAllProductsCallback)
+    }, []);
+
+    const getPublicAllProductsCallback = (data) => {
+        if (data?.hasError) return;
+        setContents(data?.data)
+    }
 
     return (
         <div className="mb-5 mt-5">
