@@ -20,6 +20,7 @@ export default function ProductItem(props) {
     const [showCollapseThree, setShowCollapseThree] = useState(false);
     const [showCollapseFour, setShowCollapseFour] = useState(false);
     const [productDetail, setProductDetail] = useState(null);
+    const [orderQuantity, setOrderQuantity] = useState(0);
     const productId = window?.location?.pathname?.split("/")?.pop();
     const [contents, setContents] = useState([]);
 
@@ -27,7 +28,7 @@ export default function ProductItem(props) {
         let params = {
             productType: props?.productType,
         }
-        GetPublicAllProductsService(params, getPublicAllProductsCallback)
+        GetPublicAllProductsService(params, getPublicAllProductsCallback);
     }, []);
 
     const getPublicAllProductsCallback = (data) => {
@@ -87,7 +88,9 @@ export default function ProductItem(props) {
                 </div>
                 <div className="mt-5 mb-5">
                     <div className="font-size-26 mb-2">{productDetail?.price}</div>
-                    <HoPrimaryButton className='w-100 py-3'>purchase</HoPrimaryButton>
+                    {orderQuantity > 0
+                        ? <HoProductQuantityManager />
+                        : <HoPrimaryButton className='w-100 py-3'>purchase</HoPrimaryButton>}
                 </div>
                 {!!productDetail?.FaqOneKey &&
                     <div className="border-top py-4">

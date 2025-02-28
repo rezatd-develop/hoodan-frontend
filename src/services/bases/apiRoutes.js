@@ -17,6 +17,12 @@ export const apiRoutes = {
         blogs: {
             getAllBlogs: '/public/blogs',
             getBlogDetail: '/public/blogs'
-        }
+        },
+    },
+    user: {
+        getCart: '/user/cart',
+        addToCart: '/user/cart',
+        updateCart: '/user/cart',
+        removeFromCart: '/user/cart',
     }
 }
