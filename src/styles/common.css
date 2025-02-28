@@ -237,3 +237,11 @@ html {
 	height: 10px;
 	border-bottom: 1px solid rgb(0, 0, 0);
 }
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.max-width-150 {
+	max-width: 150px;
+}

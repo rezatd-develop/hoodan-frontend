@@ -14,5 +14,9 @@ export const apiRoutes = {
             getAllProducts: '/public/products',
             getProductDetail: '/public/products/:id'
         },
+        blogs: {
+            getAllBlogs: '/public/blogs',
+            getBlogDetail: '/public/blogs/:id'
+        }
     }
 }

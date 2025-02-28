@@ -1,6 +1,6 @@
 import { getDictionary } from '../../../[lang]/dictionaries';
 import '../../../../styles/common.css';
-import Article from '../../../../view/public/article/ArticlePage'
+import ArticlePage from '../../../../view/public/article/ArticlePage'
 import App from './../../App';
 
 export default async function Article({ params }) {

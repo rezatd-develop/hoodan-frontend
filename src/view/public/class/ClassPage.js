@@ -58,8 +58,6 @@ export default function ClassPage() {
         <Image src={classSample} className="w-auto" style={{ height: isMobile ? '375px' : '800px' }} />,
     ]
 
-    const onSlideChange = (data) => console.log('***data', data);
-
     return <div className="px-lg-5 px-md-5 px-sm-4 px-4">
         <div className="row justify-content-between py-4">
             <div className="col-12 col-lg-7 col-md-7 col-sm-12 d-flex justify-content-center">

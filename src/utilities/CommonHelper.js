@@ -19,3 +19,9 @@ export const useIsMobile = () => {
 
   return isMobile;
 };
+
+export const convertDateToDayMonth = (date) => {
+  let convertedDate = new Date(date);
+  const formattedDate = convertedDate.toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
+  return formattedDate;
+}

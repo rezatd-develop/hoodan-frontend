@@ -29,7 +29,6 @@ export default function HoModal(props) {
 
     return (
         <React.Fragment>
-            {console.log('***open', open)}
             <Dialog
                 onClose={handleClose}
                 aria-labelledby="customized-dialog-title"

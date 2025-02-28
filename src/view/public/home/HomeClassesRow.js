@@ -21,7 +21,7 @@ export default function HomeClassesRow() {
     }
 
     return (<div className="mb-5">
-        <HomeContentRow title='Most Recent Classes' description='Find Most Recent Classes Here' contents={contents} />
+        <HomeContentRow scrollView title='Most Recent Classes' description='Find Most Recent Classes Here' contents={contents} />
     </div>
     )
 }

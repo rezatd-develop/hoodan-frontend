@@ -1,3 +1,3 @@
-export default function Article(){
+export default function ArticlePage(){
     return
 }
