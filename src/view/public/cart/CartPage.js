@@ -1,17 +1,43 @@
+'use client'
+
 import Box from '@mui/joy/Box';
 import Breadcrumbs from '@mui/joy/Breadcrumbs';
-import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
 import Typography from '@mui/joy/Typography';
-
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-import DownloadRoundedIcon from '@mui/icons-material/DownloadRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-
-import OrderList from '../../../components/profile/OrderList';
-import OrderTable from '../../../components/profile/OrderTable';
+import { useState } from 'react';
+import HoTable from '../../../components/table/HoTable';
 
 export default function CartPage() {
+    const [sortBy, setSortBy] = useState(null);
+    const [selected, setSelected] = useState([]);
+
+    const columns = [
+        { id: 'id', label: 'Invoice', width: 120, sortable: true },
+        { id: 'date', label: 'Date', width: 140 },
+        {
+            id: 'status',
+            label: 'Status',
+            width: 140,
+        },
+        {
+            id: 'customer',
+            label: 'Customer',
+            width: 240,
+        },
+    ];
+
+    const data = [
+        {
+            id: 'INV-1234',
+            date: 'Feb 3, 2023',
+            status: 'Refunded',
+            customer: 'Refunded',
+        },
+    ];
+
+
     return (
         <Box
             component="main"
@@ -74,16 +100,15 @@ export default function CartPage() {
                 <Typography level="h2" component="h1">
                     Orders
                 </Typography>
-                <Button
-                    color="primary"
-                    startDecorator={<DownloadRoundedIcon />}
-                    size="sm"
-                >
-                    Download PDF
-                </Button>
             </Box>
-            <OrderTable />
-            <OrderList />
+            <HoTable
+                columns={columns}
+                data={data}
+                selectable={true}
+                selectedRows={selected}
+                onRowSelect={setSelected}
+            />
+            <HoTable />
         </Box>
     );
 }
