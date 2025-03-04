@@ -196,6 +196,33 @@ html {
 	font-size: 14px;
 }
 
+.HoProductQuantityManagerButton-delete {
+	color: white;
+	background-color: black;
+	border-width: 1px;
+	border-radius: 100px 0px 0px 100px;
+	font-size: 14px;
+}
+
+.HoProductQuantityManagerButton-minus {
+	color: white;
+	background-color: black;
+	border-width: 1px;
+	font-size: 14px;
+}
+
+.HoProductQuantityManagerButton-input {
+	border-radius: 0px !important;
+}
+
+.HoProductQuantityManagerButton-plus {
+	color: white;
+	background-color: black;
+	border-width: 1px;
+	border-radius: 0px 100px 100px 0px;
+	font-size: 14px;
+}
+
 .black-text {
 	color: black;
 }

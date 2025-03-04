@@ -11,6 +11,8 @@ import HomeContentRow from "../home/HomeContentRow";
 import blogSample from '../../../media/images/samples/blog_sample.webp'
 import { GetPublicProductDetailService } from "@/services/Api's/public/products/publicProductApiRoutes";
 import { GetPublicAllProductsService } from "../../../services/Api's/public/products/publicProductApiRoutes";
+import HoProductQuantityManager from "../../../components/button/HoProductQuantityManager";
+import { GetUserCartService } from "../../../services/Api's/user/userCart";
 
 
 export default function ProductItem(props) {
@@ -20,28 +22,22 @@ export default function ProductItem(props) {
     const [showCollapseThree, setShowCollapseThree] = useState(false);
     const [showCollapseFour, setShowCollapseFour] = useState(false);
     const [productDetail, setProductDetail] = useState(null);
-    const [orderQuantity, setOrderQuantity] = useState(0);
+    const [productQuantity, setProductQuantity] = useState(5);
     const productId = window?.location?.pathname?.split("/")?.pop();
     const [contents, setContents] = useState([]);
 
     useEffect(() => {
-        let params = {
-            productType: props?.productType,
-        }
-        GetPublicAllProductsService(params, getPublicAllProductsCallback);
+        GetPublicAllProductsService({ productType: props?.productType }, getPublicAllProductsCallback);
+        GetPublicProductDetailService({ id: productId }, getPublicProductDetailCallback)
+        GetUserCartService(getUserCartCallback)
     }, []);
+
+    const getUserCartCallback = (data) => console.log('***data', data)
 
     const getPublicAllProductsCallback = (data) => {
         if (data?.hasError) return;
         setContents(data?.data)
     }
-
-    useEffect(() => {
-        let params = {
-            id: productId
-        }
-        GetPublicProductDetailService(params, getPublicProductDetailCallback)
-    })
 
     const getPublicProductDetailCallback = (data) => {
         if (data?.hasError) return;
@@ -88,9 +84,14 @@ export default function ProductItem(props) {
                 </div>
                 <div className="mt-5 mb-5">
                     <div className="font-size-26 mb-2">{productDetail?.price}</div>
-                    {orderQuantity > 0
-                        ? <HoProductQuantityManager />
-                        : <HoPrimaryButton className='w-100 py-3'>purchase</HoPrimaryButton>}
+                    {productQuantity > 0
+
+                        ? <HoProductQuantityManager className='mt-3 w-100'
+                            initialQuantity={productQuantity}
+                            quantityChanged={(quantity) => setProductQuantity(quantity)} />
+
+                        : <HoPrimaryButton className='w-100 py-3'
+                            onClick={() => setProductQuantity(1)}>Add to Cart</HoPrimaryButton>}
                 </div>
                 {!!productDetail?.FaqOneKey &&
                     <div className="border-top py-4">
