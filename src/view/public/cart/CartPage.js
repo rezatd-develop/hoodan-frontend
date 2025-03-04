@@ -14,18 +14,11 @@ export default function CartPage() {
     const [selected, setSelected] = useState([]);
 
     const columns = [
-        { id: 'id', label: 'Invoice', width: 120, sortable: true },
-        { id: 'date', label: 'Date', width: 140 },
-        {
-            id: 'status',
-            label: 'Status',
-            width: 140,
-        },
-        {
-            id: 'customer',
-            label: 'Customer',
-            width: 240,
-        },
+        { id: 'productId', label: 'Product Id', width: 70, sortable: true },
+        { id: 'productName', label: 'Product Name', width: 140 },
+        { id: 'quantity', label: 'Quantity', width: 70 },
+        { id: 'pricePerEach', label: 'Price Per Each', width: 70 },
+        { id: 'totalPrice', label: 'Total Price', width: 70 },
     ];
 
     const data = [
