@@ -20,9 +20,8 @@ export const apiRoutes = {
         },
     },
     user: {
-        getCart: '/user/cart',
-        addToCart: '/user/cart',
-        updateCart: '/user/cart',
-        removeFromCart: '/user/cart',
+        getCart: '/user/cart/getCart',
+        modifyCart: '/user/cart/modifyCart',
+        removeFromCart: '/user/cart/removeFromCart',
     }
 }

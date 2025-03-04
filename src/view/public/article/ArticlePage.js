@@ -18,7 +18,6 @@ export default function ArticlePage() {
     const getPublicBlogDetailCallback = (data) => {
         if (data?.hasError) return;
         setBlogDetail(data?.data);
-        console.log('***data', data)
     }
 
 

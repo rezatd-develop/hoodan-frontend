@@ -1,18 +1,15 @@
 'use client'
 
-import HoCarousel from "@/components/carousel/HoCarousel";
-import Image from "next/image";
-import classSample from '../../../media/images/samples/class_sample.png'
-import HoSecondaryButton from "@/components/button/HoSecondaryButton";
 import HoPrimaryButton from "@/components/button/HoPrimaryButton";
-import { useEffect, useState } from "react";
-import { convertDateToDayMonth, useIsMobile } from "@/utilities/CommonHelper";
-import HomeContentRow from "../home/HomeContentRow";
-import blogSample from '../../../media/images/samples/blog_sample.webp'
+import HoCarousel from "@/components/carousel/HoCarousel";
 import { GetPublicProductDetailService } from "@/services/Api's/public/products/publicProductApiRoutes";
-import { GetPublicAllProductsService } from "../../../services/Api's/public/products/publicProductApiRoutes";
+import { useIsMobile } from "@/utilities/CommonHelper";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import HoProductQuantityManager from "../../../components/button/HoProductQuantityManager";
-import { GetUserCartService } from "../../../services/Api's/user/userCart";
+import { GetPublicAllProductsService } from "../../../services/Api's/public/products/publicProductApiRoutes";
+import { GetUserCartService, ModifyUserCartService } from "../../../services/Api's/user/userCart";
+import HomeContentRow from "../home/HomeContentRow";
 
 
 export default function ProductItem(props) {
@@ -22,17 +19,20 @@ export default function ProductItem(props) {
     const [showCollapseThree, setShowCollapseThree] = useState(false);
     const [showCollapseFour, setShowCollapseFour] = useState(false);
     const [productDetail, setProductDetail] = useState(null);
-    const [productQuantity, setProductQuantity] = useState(5);
+    const [productQuantity, setProductQuantity] = useState(0);
     const productId = window?.location?.pathname?.split("/")?.pop();
     const [contents, setContents] = useState([]);
 
     useEffect(() => {
         GetPublicAllProductsService({ productType: props?.productType }, getPublicAllProductsCallback);
         GetPublicProductDetailService({ id: productId }, getPublicProductDetailCallback)
-        GetUserCartService(getUserCartCallback)
+        GetUserCartService(getUserCartCallback);
     }, []);
 
-    const getUserCartCallback = (data) => console.log('***data', data)
+    const getUserCartCallback = (data) => {
+        let availableProductInUserCart = data?.items?.find(item => item?.productId === Number(productId));
+        if (!!availableProductInUserCart?.productId) setProductQuantity(availableProductInUserCart?.quantity);
+    }
 
     const getPublicAllProductsCallback = (data) => {
         if (data?.hasError) return;
@@ -62,6 +62,17 @@ export default function ProductItem(props) {
         }
     };
 
+    const productAdded = (productQuantity) => {
+        let modifyUserCartRequestBody = {
+            productId: Number(productId),
+            quantity: productQuantity
+        };
+
+        setProductQuantity(productQuantity);
+        ModifyUserCartService(modifyUserCartRequestBody, modifyUserCartCallback)
+    }
+
+    const modifyUserCartCallback = () => console.log('')
 
     return <div className="px-lg-5 px-md-5 px-sm-4 px-4">
         <div className="row justify-content-between py-4">
@@ -88,10 +99,10 @@ export default function ProductItem(props) {
 
                         ? <HoProductQuantityManager className='mt-3 w-100'
                             initialQuantity={productQuantity}
-                            quantityChanged={(quantity) => setProductQuantity(quantity)} />
+                            quantityChanged={productAdded} />
 
                         : <HoPrimaryButton className='w-100 py-3'
-                            onClick={() => setProductQuantity(1)}>Add to Cart</HoPrimaryButton>}
+                            onClick={() => productAdded(1)}>Add to Cart</HoPrimaryButton>}
                 </div>
                 {!!productDetail?.FaqOneKey &&
                     <div className="border-top py-4">
@@ -177,5 +188,5 @@ export default function ProductItem(props) {
             <HomeContentRow title='simmilar products' description='' contents={contents} className='px-0' />
         </div>
 
-    </div>
+    </div >
 }
