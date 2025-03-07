@@ -28,6 +28,7 @@ export const apiRoutes = {
         },
         order: {
             createOrder: '/user/order/createOrder',
+            getAllOrders: '/user/order/getAllOrders',
         }
     }
 }

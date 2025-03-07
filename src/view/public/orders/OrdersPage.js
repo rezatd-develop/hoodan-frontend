@@ -4,11 +4,10 @@ import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import { useEffect, useState } from 'react';
 import HoTable from '../../../components/table/HoTable';
-import { CreateUserOrderService } from "../../../services/Api's/user/useOrder";
+import { GetUserAllOrdersService } from "../../../services/Api's/user/useOrder";
 import HoPrimaryButton from '@/components/button/HoPrimaryButton';
-import { GetUserCartService } from "@/services/Api\'s/user/userCart";
 
-export default function CartPage() {
+export default function OrdersPage() {
     const [sortBy, setSortBy] = useState(null);
     const [selected, setSelected] = useState([]);
     const [cartItemsData, setCartItemsData] = useState([]);
@@ -16,32 +15,18 @@ export default function CartPage() {
     const [resultMessageClass, setResultMessageClass] = useState(<></>);
 
     const columns = [
-        { id: 'productId', label: 'Product Id', width: 70, sortable: true },
-        { id: 'productName', label: 'Product Name', width: 140 },
-        { id: 'quantity', label: 'Quantity', width: 70 },
-        { id: 'pricePerEach', label: 'Price Per Each', width: 70 },
-        { id: 'totalPrice', label: 'Total Price', width: 70 },
+        { id: 'orderId', label: 'Order Id', width: 70 },
+        { id: 'orderStatusLabel', label: 'Order Status', width: 140 },
+        { id: 'totalOrderPrice', label: 'Price', width: 70 },
+        { id: 'orderItems', label: 'Order Items', width: 150 },
+        { id: 'orderRegistrationTimeFormatted', label: 'Order Registration Time', width: 150 },
     ];
 
-
     useEffect(() => {
-        GetUserCartService({}, getUserCartCallback)
-    }, [callServiceDate])
+        GetUserAllOrdersService(getUserAllOrdersCallback);
+    }, [])
 
-    const getUserCartCallback = (data) => setCartItemsData(data[0]?.items);
-
-    const confirmOrderClicked = () => {
-        const selectedCartItemsData = cartItemsData?.filter(cartItemData => selected?.includes(cartItemData?.productId));
-
-        CreateUserOrderService({
-            orders: selectedCartItemsData?.map(item => ({ productid: item?.productId, quantity: item?.quantity }))
-        }, (data) => {
-            setResultMessageClass(data?.message);
-            !data?.hasError && setCallServiceDate(new Date());
-            setSelected([])
-        });
-    };
-
+    const getUserAllOrdersCallback = (data) => setCartItemsData(data)
 
     return (
         <Box
@@ -77,13 +62,12 @@ export default function CartPage() {
                 }}
             >
                 <Typography level="h2" component="h1">
-                    Cart
+                    Orders
                 </Typography>
             </Box>
             <HoTable
                 columns={columns}
                 data={cartItemsData}
-                selectable={true}
                 selectedRows={selected}
                 onRowSelect={setSelected}
             />
