@@ -23,7 +23,7 @@ export default function Header() {
         p: 2,
         gap: 1,
         borderBottom: '1px solid',
-        borderColor: 'background.level1',
+        borderColor: 'background.level',
         boxShadow: 'sm',
       }}
     >

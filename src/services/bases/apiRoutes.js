@@ -30,5 +30,28 @@ export const apiRoutes = {
             createOrder: '/user/order/createOrder',
             getAllOrders: '/user/order/getAllOrders',
         }
+    },
+    admin: {
+        product: {
+            getAllProducts: 'admin/product/getAllProducts',
+            getProductDetail: 'admin/product/getProductDetail',
+            editProduct: 'admin/product/editProduct',
+            deleteProduct: 'admin/product/deleteProduct',
+            createProduct: 'admin/product/createProduct',
+        },
+        order: {
+            getAllOrders: 'admin/order/getAllOrders',
+            getOrderDetail: 'admin/order/getOrderDetail',
+            updateOrder: 'admin/order/updateOrder',
+            removeOrder: 'admin/order/removeOrder',
+            addOrder: 'admin/order/addOrder',
+        },
+        user: {
+            getAllUsers: 'admin/user/getAllUsers',
+            getUserDetail: 'admin/user/getUserDetail',
+            editUser: 'admin/user/editUser',
+            removeUser: 'admin/user/removeUser',
+            createUser: 'admin/user/createUser',
+        }
     }
 }
