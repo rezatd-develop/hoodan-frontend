@@ -96,7 +96,6 @@ export default function ProductItem(props) {
                 <div className="mt-5 mb-5">
                     <div className="font-size-26 mb-2">{productDetail?.price}</div>
                     {productQuantity > 0
-
                         ? <HoProductQuantityManager className='mt-3 w-100'
                             initialQuantity={productQuantity}
                             quantityChanged={productAdded} />
