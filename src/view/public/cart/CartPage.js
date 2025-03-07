@@ -6,12 +6,18 @@ import Link from '@mui/joy/Link';
 import Typography from '@mui/joy/Typography';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HoTable from '../../../components/table/HoTable';
+import { CreateUserOrderService } from "../../../services/Api's/user/useOrder";
+import HoPrimaryButton from '@/components/button/HoPrimaryButton';
+import { GetUserCartService } from "@/services/Api\'s/user/userCart";
 
 export default function CartPage() {
     const [sortBy, setSortBy] = useState(null);
     const [selected, setSelected] = useState([]);
+    const [cartItemsData, setCartItemsData] = useState([]);
+    const [callServiceDate, setCallServiceDate] = useState(new Date());
+    const [resultMessageClass, setResultMessageClass] = useState(<></>);
 
     const columns = [
         { id: 'productId', label: 'Product Id', width: 70, sortable: true },
@@ -21,14 +27,24 @@ export default function CartPage() {
         { id: 'totalPrice', label: 'Total Price', width: 70 },
     ];
 
-    const data = [
-        {
-            id: 'INV-1234',
-            date: 'Feb 3, 2023',
-            status: 'Refunded',
-            customer: 'Refunded',
-        },
-    ];
+
+    useEffect(() => {
+        GetUserCartService({}, getUserCartCallback)
+    }, [callServiceDate])
+
+    const getUserCartCallback = (data) => setCartItemsData(data[0]?.items);
+
+    const confirmOrderClicked = () => {
+        const selectedCartItemsData = cartItemsData?.filter(cartItemData => selected?.includes(cartItemData?.productId));
+
+        CreateUserOrderService({
+            orders: selectedCartItemsData?.map(item => ({ productid: item?.productId, quantity: item?.quantity }))
+        }, (data) => {
+            setResultMessageClass(data?.message);
+            !data?.hasError && setCallServiceDate(new Date());
+            setSelected([])
+        });
+    };
 
 
     return (
@@ -52,6 +68,7 @@ export default function CartPage() {
             }}
         >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                {console.log('***selected', selected)}
                 <Breadcrumbs
                     size="sm"
                     aria-label="breadcrumbs"
@@ -96,12 +113,18 @@ export default function CartPage() {
             </Box>
             <HoTable
                 columns={columns}
-                data={data}
+                data={cartItemsData}
                 selectable={true}
                 selectedRows={selected}
                 onRowSelect={setSelected}
             />
             <HoTable />
+            {(selected?.length > 0) &&
+                <HoPrimaryButton onClick={confirmOrderClicked} className='py-3 mt-5'>Confirm Order</HoPrimaryButton>
+            }
+            <div className='text-center'>
+            {resultMessageClass}
+            </div>
         </Box>
     );
 }

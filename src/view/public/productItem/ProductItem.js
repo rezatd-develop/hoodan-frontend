@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import HoProductQuantityManager from "../../../components/button/HoProductQuantityManager";
 import { GetPublicAllProductsService } from "../../../services/Api's/public/products/publicProductApiRoutes";
-import { GetUserCartService, ModifyUserCartService } from "../../../services/Api's/user/userCart";
+import { GetCartService, ModifyUserCartService } from "../../../services/Api's/user/userCart";
 import HomeContentRow from "../home/HomeContentRow";
 
 
@@ -26,7 +26,7 @@ export default function ProductItem(props) {
     useEffect(() => {
         GetPublicAllProductsService({ productType: props?.productType }, getPublicAllProductsCallback);
         GetPublicProductDetailService({ id: productId }, getPublicProductDetailCallback)
-        GetUserCartService(getUserCartCallback);
+        GetCartService(getUserCartCallback);
     }, []);
 
     const getUserCartCallback = (data) => {

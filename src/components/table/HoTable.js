@@ -16,7 +16,7 @@ const HoTable = ({
 }) => {
     const handleSelectAll = (event) => {
         if (onRowSelect) {
-            const allIds = event.target.checked ? data?.map(row => row.id) : [];
+            const allIds = event.target.checked ? data?.map(row => row.productId) : [];
             onRowSelect(allIds);
         }
     };
@@ -49,9 +49,9 @@ const HoTable = ({
                             <Checkbox
                                 size="sm"
                                 indeterminate={
-                                    selectedRows.length > 0 && selectedRows.length !== data.length
+                                    selectedRows.length > 0 && selectedRows.length !== data?.length
                                 }
-                                checked={selectedRows.length === data.length}
+                                checked={selectedRows.length === data?.length}
                                 onChange={handleSelectAll}
                             />
                         </th>
@@ -78,14 +78,15 @@ const HoTable = ({
                 </tr>
             </thead>
             <tbody>
-                {data?.map((row) => (
-                    <tr key={row.id}>
+                {data?.map((row) => {
+                    return(
+                    <tr key={row.productId}>
                         {selectable && (
                             <td style={{ textAlign: 'center', width: 48 }}>
                                 <Checkbox
                                     size="sm"
-                                    checked={selectedRows.includes(row.id)}
-                                    onChange={(e) => handleRowSelect(row.id, e.target.checked)}
+                                    checked={selectedRows.includes(row.productId)}
+                                    onChange={(e) => handleRowSelect(row.productId, e.target.checked)}
                                 />
                             </td>
                         )}
@@ -100,7 +101,7 @@ const HoTable = ({
                             </td>
                         )}
                     </tr>
-                ))}
+                )})}
             </tbody>
         </Table>
     );

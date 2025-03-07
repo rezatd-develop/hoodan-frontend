@@ -20,8 +20,14 @@ export const apiRoutes = {
         },
     },
     user: {
-        getCart: '/user/cart/getCart',
-        modifyCart: '/user/cart/modifyCart',
-        removeFromCart: '/user/cart/removeFromCart',
+        cart: {
+            getCart: '/user/cart/getCart',
+            modifyCart: '/user/cart/modifyCart',
+            removeFromCart: '/user/cart/removeFromCart',
+            getUserCart: '/user/cart/getUserCart',
+        },
+        order: {
+            createOrder: '/user/order/createOrder',
+        }
     }
 }
