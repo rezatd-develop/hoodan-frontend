@@ -1,18 +1,20 @@
 'use client'
 
+import { translateOrderStatus } from '@/utilities/CommonHelper';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import HoTable from '../../../components/table/HoTable';
 import { GetAdminAllOrdersService } from "../../../services/Api's/admin/order/adminOrderApiRoutes";
-import HoPrimaryButton from '@/components/button/HoPrimaryButton';
-import { translateOrderStatus } from '@/utilities/CommonHelper';
 
 export default function AdminPage() {
     const [sortBy, setSortBy] = useState(null);
     const [selected, setSelected] = useState([]);
     const [cartItemsData, setCartItemsData] = useState([]);
+    const [orderDetails, setOrderDetails] = useState(null);
     const [callServiceDate, setCallServiceDate] = useState(new Date());
+    const [showOrderDetailsModal, setShowOrderDetailsModal] = useState(false);
     const [resultMessageClass, setResultMessageClass] = useState(<></>);
 
     const columns = [
@@ -21,11 +23,12 @@ export default function AdminPage() {
         { id: 'orderStatusLabel', label: 'Order Status', width: 140 },
         { id: 'orderRegistrationTimeFormatted', label: 'Order Registration Time', width: 150 },
         { id: 'orderItems', label: 'Order Items', width: 150 },
+        { id: 'actionButtons', label: 'Actions', width: 70 },
     ];
 
     useEffect(() => {
         GetAdminAllOrdersService(getAdminAllOrdersCallback);
-    }, [])
+    }, []);
 
     const getAdminAllOrdersCallback = (data) => {
         const newData = data?.orders?.map((item) =>
@@ -33,7 +36,8 @@ export default function AdminPage() {
             ...item,
             orderRegistrationTimeFormatted: new Date(item?.orderRegistrationTime).toLocaleString(),
             orderItems: item?.items.map(orderItem => orderItem.productTitle).join(', '),
-            orderStatusLabel: translateOrderStatus(item?.orderStatus)
+            orderStatusLabel: translateOrderStatus(item?.orderStatus),
+            actionButtons: <Link href={`/admin/orders/${item.orderId}`} class="bi bi-pencil-square cursor-pointer"></Link>
         }))
 
         setCartItemsData(newData)
@@ -83,12 +87,9 @@ export default function AdminPage() {
                 onRowSelect={setSelected}
             />
             <HoTable />
-            {(selected?.length > 0) &&
-                <HoPrimaryButton onClick={confirmOrderClicked} className='py-3 mt-5'>Confirm Order</HoPrimaryButton>
-            }
             <div className='text-center'>
                 {resultMessageClass}
             </div>
-        </Box>
+        </Box >
     );
 }
