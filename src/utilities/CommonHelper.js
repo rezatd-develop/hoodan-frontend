@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { enumerations } from '../resources/enums/enumerations';
 
 export const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -36,4 +37,14 @@ export const htmlToPlainText = (html) => {
   });
 
   return tempElement.textContent || tempElement.innerText;
+}
+
+export const translateOrderStatus = (orderStatus) => {
+  switch (orderStatus) {
+    case enumerations.order.orderStatus.registered: return 'registered'
+    case enumerations.order.orderStatus.preparing: return 'preparing'
+    case enumerations.order.orderStatus.ready: return 'ready'
+    default:
+      break;
+  }
 }

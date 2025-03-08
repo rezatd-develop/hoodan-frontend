@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import HoTable from '../../../components/table/HoTable';
 import { GetAdminAllOrdersService } from "../../../services/Api's/admin/order/adminOrderApiRoutes";
 import HoPrimaryButton from '@/components/button/HoPrimaryButton';
+import { translateOrderStatus } from '@/utilities/CommonHelper';
 
 export default function AdminPage() {
     const [sortBy, setSortBy] = useState(null);
@@ -16,17 +17,27 @@ export default function AdminPage() {
 
     const columns = [
         { id: 'orderId', label: 'Order Id', width: 70 },
+        { id: 'fullName', label: 'Full Name', width: 140 },
         { id: 'orderStatusLabel', label: 'Order Status', width: 140 },
-        { id: 'totalOrderPrice', label: 'Price', width: 70 },
-        { id: 'orderItems', label: 'Order Items', width: 150 },
         { id: 'orderRegistrationTimeFormatted', label: 'Order Registration Time', width: 150 },
+        { id: 'orderItems', label: 'Order Items', width: 150 },
     ];
 
     useEffect(() => {
         GetAdminAllOrdersService(getAdminAllOrdersCallback);
     }, [])
 
-    const getAdminAllOrdersCallback = (data) => setCartItemsData(data?.orders)
+    const getAdminAllOrdersCallback = (data) => {
+        const newData = data?.orders?.map((item) =>
+        ({
+            ...item,
+            orderRegistrationTimeFormatted: new Date(item?.orderRegistrationTime).toLocaleString(),
+            orderItems: item?.items.map(orderItem => orderItem.productTitle).join(', '),
+            orderStatusLabel: translateOrderStatus(item?.orderStatus)
+        }))
+
+        setCartItemsData(newData)
+    }
 
     return (
         <Box
