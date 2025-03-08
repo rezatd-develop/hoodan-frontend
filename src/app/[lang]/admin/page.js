@@ -1,7 +1,7 @@
 import { getDictionary } from '../../[lang]/dictionaries';
 import '../../../styles/common.css';
 import App from './../App';
-import ProfileLayout from '../../../layouts/profile/ProfileLayout';
+import AdminLayout from '../../../layouts/admin/AdminLayout';
 import AdminOrderPage from '../../../view/admin/order/AdminOrderPage';
 
 export default async function Admin({ params }) {
@@ -9,9 +9,9 @@ export default async function Admin({ params }) {
 
     return (
         <App params={params} t={t} lang={params?.lang} >
-            <ProfileLayout>
+            <AdminLayout>
                 <AdminOrderPage />
-            </ProfileLayout>
+            </AdminLayout>
         </App >
     );
 }

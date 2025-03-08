@@ -19,6 +19,7 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import BrightnessAutoRoundedIcon from '@mui/icons-material/BrightnessAutoRounded';
 
 import { closeSidebar } from '../../utilities/profile/utils';
+import Link from 'next/link';
 
 function Toggler({ defaultExpanded = false, renderToggle, children }) {
   const [open, setOpen] = React.useState(defaultExpanded);
@@ -43,7 +44,7 @@ function Toggler({ defaultExpanded = false, renderToggle, children }) {
   );
 }
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   return (
     <Sheet
       className="Sidebar"
@@ -123,14 +124,26 @@ export default function Sidebar() {
             '--ListItem-radius': (theme) => theme.vars.radius.sm,
           }}
         >
-          <ListItem>
-            <ListItemButton selected>
-              <ShoppingCartRoundedIcon />
-              <ListItemContent>
-                <Typography level="title-sm">Orders</Typography>
-              </ListItemContent>
-            </ListItemButton>
-          </ListItem>
+          {!props?.isAdmin &&
+            <ListItem>
+              <ListItemButton selected>
+                <ShoppingCartRoundedIcon />
+                <ListItemContent>
+                  <Link href='/profile' level="title-sm" className='text-dark text-decoration-none'>Orders</Link>
+                </ListItemContent>
+              </ListItemButton>
+            </ListItem>
+          }
+          {!props?.isAdmin &&
+            <ListItem>
+              <ListItemButton selected>
+                <ShoppingCartRoundedIcon />
+                <ListItemContent>
+                  <Link href='/profile' level="title-sm" className='text-dark text-decoration-none'>Orders</Link>
+                </ListItemContent>
+              </ListItemButton>
+            </ListItem>
+          }
 
           {/* <ListItem nested>
             <Toggler
