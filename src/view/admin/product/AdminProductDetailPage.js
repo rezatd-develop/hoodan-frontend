@@ -115,16 +115,9 @@ export default function AdminProductDetailPage() {
             categories,
             content
         }));
-        console.log('***image',image)
         formData.append("image", image);
-
-        if (image) {
-            setTimeout(() => {
-                EditAdminProductDetailService(formData, editAdminProductDetailCallback);
-            }, 5000);
-        } else {
-            EditAdminProductDetailService(formData, editAdminProductDetailCallback);
-        }
+        
+        EditAdminProductDetailService(formData, editAdminProductDetailCallback);
 
     };
 
@@ -143,10 +136,10 @@ export default function AdminProductDetailPage() {
         const file = event.target.files[0];
         if (file) {
             console.log("Selected Image:", file); // ✅ Debugging
-            setImage(file); 
+            setImage(file);
         }
     };
-    
+
 
     return <div className="p-3 p-lg-4 p-md-4 p-sm-3 rounded rounded-3 border border-dark mx-3 w-100">
 
