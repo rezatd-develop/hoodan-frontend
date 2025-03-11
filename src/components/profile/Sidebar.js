@@ -17,7 +17,8 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import BrightnessAutoRoundedIcon from '@mui/icons-material/BrightnessAutoRounded';
-
+import ViewStreamIcon from '@mui/icons-material/ViewStream';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
 import { closeSidebar } from '../../utilities/profile/utils';
 import Link from 'next/link';
 
@@ -127,7 +128,7 @@ export default function Sidebar(props) {
           {!props?.isAdmin &&
             <ListItem>
               <ListItemButton selected>
-                <ShoppingCartRoundedIcon />
+                <ViewStreamIcon />
                 <ListItemContent>
                   <Link href='/profile' level="title-sm" className='text-dark text-decoration-none'>Orders</Link>
                 </ListItemContent>
@@ -139,7 +140,27 @@ export default function Sidebar(props) {
               <ListItemButton selected>
                 <ShoppingCartRoundedIcon />
                 <ListItemContent>
-                  <Link href='/profile' level="title-sm" className='text-dark text-decoration-none'>Orders</Link>
+                  <Link href='/cart' level="title-sm" className='text-dark text-decoration-none'>Cart</Link>
+                </ListItemContent>
+              </ListItemButton>
+            </ListItem>
+          }
+          {props?.isAdmin &&
+            <ListItem>
+              <ListItemButton selected>
+                <ShoppingCartRoundedIcon />
+                <ListItemContent>
+                  <Link href='/admin/orders' level="title-sm" className='text-dark text-decoration-none'>Orders</Link>
+                </ListItemContent>
+              </ListItemButton>
+            </ListItem>
+          }
+          {props?.isAdmin &&
+            <ListItem>
+              <ListItemButton selected>
+                <Inventory2Icon />
+                <ListItemContent>
+                  <Link href='/admin/products' level="title-sm" className='text-dark text-decoration-none'>Products</Link>
                 </ListItemContent>
               </ListItemButton>
             </ListItem>

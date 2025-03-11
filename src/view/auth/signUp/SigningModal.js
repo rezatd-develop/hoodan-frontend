@@ -63,6 +63,7 @@ export default function SigningModal(props) {
 
     const nextButtonClicked = (data, currentSigningStep) => {
         if (currentSigningStep === 1) {
+            console.log('***data',data)
             sendPhoneAuth(data);
             setPhoneNumber(data)
         }

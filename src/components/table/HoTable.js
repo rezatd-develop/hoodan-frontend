@@ -35,7 +35,7 @@ const HoTable = ({
             stickyHeader
             hoverRow
             sx={{
-                '--TableCell-headBackground': 'var(--joy-palette-background-level1)',
+                '--TableCell-headBackground': '#e8e8e8',
                 '--Table-headerUnderlineThickness': '1px',
                 '--TableRow-hoverBackground': 'var(--joy-palette-background-level1)',
                 '--TableCell-paddingY': '4px',
@@ -79,29 +79,30 @@ const HoTable = ({
             </thead>
             <tbody>
                 {data?.map((row) => {
-                    return(
-                    <tr key={row.productId}>
-                        {selectable && (
-                            <td style={{ textAlign: 'center', width: 48 }}>
-                                <Checkbox
-                                    size="sm"
-                                    checked={selectedRows.includes(row.productId)}
-                                    onChange={(e) => handleRowSelect(row.productId, e.target.checked)}
-                                />
-                            </td>
-                        )}
-                        {columns?.map((col) => (
-                            <td key={col.id} style={{ width: col.width }}>
-                                {col.render ? col.render(row[col.id], row) : row[col.id]}
-                            </td>
-                        ))}
-                        {actions && (
-                            <td>
-                                {typeof actions === 'function' ? actions(row) : actions}
-                            </td>
-                        )}
-                    </tr>
-                )})}
+                    return (
+                        <tr key={row.productId}>
+                            {selectable && (
+                                <td style={{ textAlign: 'center', width: 48 }}>
+                                    <Checkbox
+                                        size="sm"
+                                        checked={selectedRows.includes(row.productId)}
+                                        onChange={(e) => handleRowSelect(row.productId, e.target.checked)}
+                                    />
+                                </td>
+                            )}
+                            {columns?.map((col) => (
+                                <td key={col.id} style={{ width: col.width }}>
+                                    {col.render ? col.render(row[col.id], row) : row[col.id]}
+                                </td>
+                            ))}
+                            {actions && (
+                                <td>
+                                    {typeof actions === 'function' ? actions(row) : actions}
+                                </td>
+                            )}
+                        </tr>
+                    )
+                })}
             </tbody>
         </Table>
     );
