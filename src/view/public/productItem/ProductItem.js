@@ -45,18 +45,16 @@ export default function ProductItem(props) {
     }
 
     const createProductImages = () => {
-        if (productDetail?.images?.length > 0) {
-            return productDetail?.images?.map((item, index) => (
-                <Image
-                    key={index}
-                    src={item}
-                    alt={`Product Image ${index + 1}`}
-                    className="w-auto"
-                    style={{ height: isMobile ? '375px' : '800px' }}
-                    width={800}
-                    height={800}
-                />
-            ));
+        if (!!productDetail?.productId) {
+            return <Image
+                src={productDetail?.imageUrl}
+                key={3587387}
+                alt='Product Image'
+                className="w-auto"
+                style={{ height: isMobile ? '375px' : '800px' }}
+                width={800}
+                height={800}
+            />
         } else {
             return [<div key="no-image">Product Image Not Available</div>];
         }
@@ -79,7 +77,7 @@ export default function ProductItem(props) {
             <div className="col-12 col-lg-7 col-md-7 col-sm-12 d-flex justify-content-center">
                 <HoCarousel
                     // onSlideChange={onSlideChange}
-                    slides={createProductImages()}>
+                    slides={[createProductImages()]}>
 
                 </HoCarousel>
             </div>

@@ -3,9 +3,9 @@ import axios from 'axios';
 const axiosInstance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/en',
     timeout: 5000,
-    headers: {
-        'Content-Type': 'application/json',
-    },
+    // headers: {
+    //     'Content-Type': 'application/json',
+    // },
 });
 
 export const GetRequest = (apiUrl, params, callback) => {
@@ -46,15 +46,18 @@ export const PostRequest = (apiUrl, data, callback) => {
 };
 
 
-export const PutRequest = (apiUrl, data, callback) => {
+export const PutRequest = (apiUrl, data, callback) => { 
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    const headers = {
+        Authorization: token ? token : '',
+    };
+
+    if (!(data instanceof FormData)) {
+        headers['Content-Type'] = 'application/json';
+    }
 
     axiosInstance
-        .put(apiUrl, data, {
-            headers: {
-                Authorization: token ? token : '',
-            },
-        })
+        .put(apiUrl, data, { headers })
         .then((response) => {
             callback(response.data);
         })
@@ -63,6 +66,7 @@ export const PutRequest = (apiUrl, data, callback) => {
             callback(null, error);
         });
 };
+
 
 export const DeleteRequest = (apiUrl, params, callback) => {
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
