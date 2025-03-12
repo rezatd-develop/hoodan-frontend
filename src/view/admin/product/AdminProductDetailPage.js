@@ -4,7 +4,7 @@ import HoPrimaryButton from "@/components/button/HoPrimaryButton";
 import HoTable from "@/components/table/HoTable";
 import { enumerations } from "@/resources/enums/enumerations";
 import { EditAdminOrderDetailService, RemoveAdminOrderService } from "@/services/Api's/admin/order/adminOrderApiRoutes";
-import { EditAdminProductDetailService, GetAdminProductDetailService } from "@/services/Api's/admin/product/adminProductApiRoutes";
+import { CreateAdminProductService, EditAdminProductDetailService, GetAdminProductDetailService } from "@/services/Api's/admin/product/adminProductApiRoutes";
 import { translateOrderStatus } from "@/utilities/CommonHelper";
 import { useEffect, useState } from "react";
 import LabelBox from '../../../components/labelbox/LabelBox';
@@ -39,6 +39,9 @@ export default function AdminProductDetailPage() {
     const [categories, setCategories] = useState(null);
     const [content, setContent] = useState(null);
     const [image, setImage] = useState(null);
+    const [userDefinedProductId, setUserDefinedProductId] = useState(null);
+    const [userDefinedProductType, setUserDefinedProductType] = useState(null);
+    const [hasProductId, setHasProductId] = useState(false);
 
     const columns = [
         { id: 'productId', label: 'Product Id', width: 70 },
@@ -49,7 +52,10 @@ export default function AdminProductDetailPage() {
 
     useEffect(() => {
         const productId = window?.location.pathname.split("/").pop();
-        GetAdminProductDetailService({ productId: productId }, getAdminProductDetailCallback)
+        if (typeof productId === 'number') setHasProductId(true);
+
+        if (typeof productId === 'number')
+            GetAdminProductDetailService({ productId: productId }, getAdminProductDetailCallback)
     }, [])
 
     const getAdminProductDetailCallback = (data) => {
@@ -113,20 +119,47 @@ export default function AdminProductDetailPage() {
             mainDescription,
             author,
             categories,
-            content
+            content,
+            productId: userDefinedProductId
         }));
-        console.log('***image',image)
         formData.append("image", image);
-
-        if (image) {
-            setTimeout(() => {
-                EditAdminProductDetailService(formData, editAdminProductDetailCallback);
-            }, 5000);
-        } else {
-            EditAdminProductDetailService(formData, editAdminProductDetailCallback);
-        }
+        if (hasProductId) EditAdminProductDetailService(formData, editAdminProductDetailCallback);
 
     };
+
+    const createProductClicked = () => {
+        let body = {
+            title,
+            description,
+            price,
+            classSeries,
+            primaryDescription,
+            secondDescription,
+            thirdDescription,
+            FaqOneKey,
+            FaqOneValue,
+            FaqTwoKey,
+            FaqTwoValue,
+            FaqThreeKey,
+            FaqThreeValue,
+            FaqFourKey,
+            FaqFourValue,
+            detailOneKey,
+            detailOneValue,
+            detailTwoKey,
+            detailTwoValue,
+            detailThreeKey,
+            detailThreeValue,
+            mainDescription,
+            author,
+            categories,
+            content,
+            productId: Number(userDefinedProductId),
+            productType: Number(userDefinedProductType)
+        };
+
+        CreateAdminProductService(body, editAdminProductDetailCallback);
+    }
 
     const editAdminProductDetailCallback = (data) => console.log('***data', data);
 
@@ -142,11 +175,10 @@ export default function AdminProductDetailPage() {
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
-            console.log("Selected Image:", file); // ✅ Debugging
-            setImage(file); 
+            setImage(file);
         }
     };
-    
+
 
     return <div className="p-3 p-lg-4 p-md-4 p-sm-3 rounded rounded-3 border border-dark mx-3 w-100">
 
@@ -160,13 +192,25 @@ export default function AdminProductDetailPage() {
 
         <div className="mt-5 mb-4 fw-bold w-auto">Edit Product</div>
         <div className="row d-flex">
-            <div className="col-12 mb-3">
-                <label className="form-label">Upload Image</label>
-                <input type="file" className="form-control" onChange={handleImageUpload} />
-            </div>
+            {hasProductId &&
+                <div className="col-12 mb-3">
+                    <label className="form-label">Upload Image</label>
+                    <input type="file" className="form-control" onChange={handleImageUpload} />
+                </div>
+            }
             <div className="col-4 mb-3">
                 <HoTextField onChange={(data) => setTitle(data)} label='Title' value={title} className='w-100' />
             </div>
+            {!hasProductId &&
+                <div className="col-4 mb-3">
+                    <HoTextField onChange={(data) => setUserDefinedProductId(data)} label='Product Id' value={userDefinedProductId} className='w-100' />
+                </div>
+            }
+            {!hasProductId &&
+                <div className="col-4 mb-3">
+                    <HoTextField onChange={(data) => setUserDefinedProductType(data)} label='Product Type' value={userDefinedProductType} className='w-100' />
+                </div>
+            }
             <div className="col-12 mb-3">
                 <HoTextField onChange={(data) => setDescription(data)} label='Description' value={description} className='w-100' />
             </div>
@@ -243,7 +287,11 @@ export default function AdminProductDetailPage() {
             <div className="col-12 mb-3">
                 <HoTextField onChange={(data) => setContent(data)} label='Content' value={content} className='w-100' />
             </div>
-            <HoPrimaryButton onClick={saveProductClicked} className='mt-2 me-2 py-3 bg-primary w-auto'>Save Changes</HoPrimaryButton>
+            {hasProductId
+                ? <HoPrimaryButton onClick={saveProductClicked} className='mt-2 me-2 py-3 bg-primary w-auto'>Save Changes</HoPrimaryButton>
+                : <HoPrimaryButton onClick={createProductClicked} className='mt-2 me-2 py-3 bg-primary w-auto'>Create Product</HoPrimaryButton>
+            }
+
         </div>
         <div className="mb-3 fw-bold w-auto my-4">Actions</div>
         <div>

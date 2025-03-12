@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import HoTable from '../../../components/table/HoTable';
 import { GetAdminAllProductsService } from "../../../services/Api's/admin/product/adminProductApiRoutes";
+import HoPrimaryButton from '@/components/button/HoPrimaryButton';
 
 export default function AdminProductPage() {
     const [selected, setSelected] = useState([]);
@@ -79,6 +80,9 @@ export default function AdminProductPage() {
                 onRowSelect={setSelected}
             />
             <HoTable />
+            <Link href='/admin/products/create'>
+                <HoPrimaryButton className='mt-2 me-2 bg-success'>Create Product</HoPrimaryButton>
+            </Link>
             <div className='text-center'>
                 {resultMessageClass}
             </div>
