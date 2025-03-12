@@ -46,6 +46,7 @@ export default function ProductItem(props) {
 
     const createProductImages = () => {
         if (!!productDetail?.productId) {
+            console.log('***productDetail?.imageUrl',productDetail?.imageUrl)
             return <Image
                 src={productDetail?.imageUrl}
                 key={3587387}
