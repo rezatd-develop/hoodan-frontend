@@ -4,11 +4,12 @@ import HoPrimaryButton from "@/components/button/HoPrimaryButton";
 import HoTable from "@/components/table/HoTable";
 import { enumerations } from "@/resources/enums/enumerations";
 import { EditAdminOrderDetailService, RemoveAdminOrderService } from "@/services/Api's/admin/order/adminOrderApiRoutes";
-import { CreateAdminProductService, EditAdminProductDetailService, GetAdminProductDetailService } from "@/services/Api's/admin/product/adminProductApiRoutes";
+import { CreateAdminProductService, EditAdminProductDetailService, GetAdminProductDetailService, RemoveAdminProductService } from "@/services/Api's/admin/product/adminProductApiRoutes";
 import { translateOrderStatus } from "@/utilities/CommonHelper";
 import { useEffect, useState } from "react";
 import LabelBox from '../../../components/labelbox/LabelBox';
 import HoTextField from "@/components/textfield/HoTextField";
+import { useRouter } from "next/navigation";
 
 export default function AdminProductDetailPage() {
     const [productDetails, setProductDetails] = useState(null);
@@ -42,6 +43,7 @@ export default function AdminProductDetailPage() {
     const [userDefinedProductId, setUserDefinedProductId] = useState(null);
     const [userDefinedProductType, setUserDefinedProductType] = useState(null);
     const [hasProductId, setHasProductId] = useState(false);
+    const router = useRouter()
 
     const columns = [
         { id: 'productId', label: 'Product Id', width: 70 },
@@ -170,7 +172,7 @@ export default function AdminProductDetailPage() {
         RemoveAdminProductService(params, removeAdminProductCallback)
     };
 
-    const removeAdminProductCallback = (data) => !data?.hasError && window.location.reload();
+    const removeAdminProductCallback = (data) => !data?.hasError && router.push('/admin/products');
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
