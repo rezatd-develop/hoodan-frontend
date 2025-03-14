@@ -30,7 +30,6 @@ export default function HoCarousel(props) {
             className="mySwiper"
             onSlideChange={props?.onSlideChange}
         >
-        {console.log('***slides',props?.slides)}
             {props?.slides?.length > 0 &&
                 props?.slides?.map((item, index) => (
                     <SwiperSlide key={index}>{item}</SwiperSlide>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import HoTextInput from "../../../components/input/HoTextInput";
 import logo from "../../../media/images/company/logo.png";
@@ -21,7 +21,12 @@ export default function PuTopHeader(props) {
     const [showSigningModal, setShowSigningModal] = useState(false);
     const [searchText, setSearchText] = useState('')
     const isSignedIn = localStorage.getItem('token')
+    const router = useRouter();
 
+    useEffect(() => {
+        const needAuthenticationInUrlParams = location?.search?.includes('needAuthentication');
+        if (needAuthenticationInUrlParams) setShowSigningModal(true);
+    }, [])
 
     const handleMenuNavigation = (menu) => {
         if (!menu) return;
@@ -29,7 +34,10 @@ export default function PuTopHeader(props) {
     };
 
     const toggleShowSigningModal = () => setShowSigningModal(!showSigningModal);
-    const closeModal = () => setShowSigningModal(false);
+    const closeModal = (needReload) => {
+        setShowSigningModal(false);
+        router.push('/')
+    }
 
     const mobileNavLinks = [
         { id: 4, label: 'Classes', href: '/classes' },
@@ -91,7 +99,6 @@ export default function PuTopHeader(props) {
         </div>
     );
 
-    const router = useRouter();
     const searchBarEntered = (data) => {
         if (data?.key === 'Enter') {
             router.push(`/search/?searchText=${searchText}`)

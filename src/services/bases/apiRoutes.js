@@ -52,6 +52,10 @@ export const apiRoutes = {
             editUser: 'admin/user/editUser',
             removeUser: 'admin/user/removeUser',
             createUser: 'admin/user/createUser',
-        }
+        },
+    },
+    auth: {
+        isAdmin: 'auth/isAdmin',
+        isUser: 'auth/isUser',
     }
 }

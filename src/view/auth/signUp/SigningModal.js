@@ -35,7 +35,7 @@ export default function SigningModal(props) {
                 setSigningStep(3);
             } else {
                 toggleErrorMessageModal(data?.message);
-                setTimeout(() => props?.closeModal(), 2000);
+                setTimeout(() => props?.closeModal(true), 2000);
                 localStorage.setItem('token', data?.data?.token);
             }
         } else toggleErrorMessageModal(data?.message)
@@ -57,13 +57,12 @@ export default function SigningModal(props) {
         };
         SendRegisterAuthService(bodyRequest, (data) => {
             toggleErrorMessageModal(data?.message);
-            setTimeout(() => props?.closeModal(), 2000)
+            setTimeout(() => props?.closeModal(true), 2000)
         })
     }
 
     const nextButtonClicked = (data, currentSigningStep) => {
         if (currentSigningStep === 1) {
-            console.log('***data',data)
             sendPhoneAuth(data);
             setPhoneNumber(data)
         }
