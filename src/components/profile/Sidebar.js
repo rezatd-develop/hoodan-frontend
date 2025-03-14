@@ -21,9 +21,11 @@ import ViewStreamIcon from '@mui/icons-material/ViewStream';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import { closeSidebar } from '../../utilities/profile/utils';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 function Toggler({ defaultExpanded = false, renderToggle, children }) {
   const [open, setOpen] = React.useState(defaultExpanded);
+
   return (
     <>
       {renderToggle({ open, setOpen })}
@@ -46,6 +48,8 @@ function Toggler({ defaultExpanded = false, renderToggle, children }) {
 }
 
 export default function Sidebar(props) {
+  const t = useSelector((state) => state.dictionary.t);
+
   return (
     <Sheet
       className="Sidebar"
@@ -98,12 +102,12 @@ export default function Sidebar(props) {
         }}
         onClick={() => closeSidebar()}
       />
-      <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+      {/* <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
         <IconButton variant="soft" color="primary" size="sm">
           <BrightnessAutoRoundedIcon />
         </IconButton>
         <Typography level="title-lg">Acme Co.</Typography>
-      </Box>
+      </Box> */}
       <Input size="sm" startDecorator={<SearchRoundedIcon />} placeholder="Search" />
       <Box
         sx={{
@@ -130,7 +134,7 @@ export default function Sidebar(props) {
               <ListItemButton selected>
                 <ViewStreamIcon />
                 <ListItemContent>
-                  <Link href='/profile' level="title-sm" className='text-dark text-decoration-none'>Orders</Link>
+                  <Link href='/user/profile' level="title-sm" className='text-dark text-decoration-none'>{t?.user?.orders}</Link>
                 </ListItemContent>
               </ListItemButton>
             </ListItem>
@@ -140,7 +144,7 @@ export default function Sidebar(props) {
               <ListItemButton selected>
                 <ShoppingCartRoundedIcon />
                 <ListItemContent>
-                  <Link href='/cart' level="title-sm" className='text-dark text-decoration-none'>Cart</Link>
+                  <Link href='/user/cart' level="title-sm" className='text-dark text-decoration-none'>{t?.user?.cart}</Link>
                 </ListItemContent>
               </ListItemButton>
             </ListItem>
@@ -150,7 +154,7 @@ export default function Sidebar(props) {
               <ListItemButton selected>
                 <ShoppingCartRoundedIcon />
                 <ListItemContent>
-                  <Link href='/admin/orders' level="title-sm" className='text-dark text-decoration-none'>Orders</Link>
+                  <Link href='/admin/orders' level="title-sm" className='text-dark text-decoration-none'>{t?.user?.orders}</Link>
                 </ListItemContent>
               </ListItemButton>
             </ListItem>
@@ -160,7 +164,7 @@ export default function Sidebar(props) {
               <ListItemButton selected>
                 <Inventory2Icon />
                 <ListItemContent>
-                  <Link href='/admin/products' level="title-sm" className='text-dark text-decoration-none'>Products</Link>
+                  <Link href='/admin/products' level="title-sm" className='text-dark text-decoration-none'>{t?.user?.products}</Link>
                 </ListItemContent>
               </ListItemButton>
             </ListItem>

@@ -1,33 +1,72 @@
 {
   "isLoaded": true,
   "hedaer": {
-    "searchBarPlaceholder": "جستجو با نام خواننده، گالری، استایل، تم، تگ و ...",
-    "searchBarPlaceholderMobile": "جستجو در Hoodan"
+    "searchBarPlaceholder": "جستجو بر اساس هنرمند، گالری، سبک، موضوع، برچسب و غیره",
+    "searchBarPlaceholderMobile": "جستجوی هودان",
+    "profile": "پروفایل",
+    "cart": "سبد خرید",
+    "classes": "کلاس‌ها",
+    "books": "کتاب‌ها",
+    "artItems": "اقلام هنری",
+    "articles": "مقالات"
   },
   "bottomHeader": {
-    "whatsnew": "اخبار جدید",
+    "whatsnew": "جدیدترین‌ها",
     "artists": "هنرمندان",
-    "artworks": "کار های هنری",
-    "auctions": "حراج ها",
-    "viewingRooms": "نمایشگاه ها",
-    "galleries": "گالری ها",
-    "fairsAndEvents": "رویداد ها",
-    "shows": "شو ها",
-    "museums": "موزه ها"
+    "artworks": "آثار هنری",
+    "auctions": "حراجی‌ها",
+    "viewingRooms": "اتاق‌های نمایش",
+    "galleries": "گالری‌ها",
+    "fairsAndEvents": "نمایشگاه‌ها و رویدادها",
+    "shows": "نمایش‌ها",
+    "museums": "موزه‌ها"
   },
   "common": {
     "buy": "خرید",
-    "priceDatabase": "دیتابیس قیمت",
+    "priceDatabase": "پایگاه داده قیمت",
     "editorial": "سرمقاله",
     "login": "ورود",
-    "signUp": "ثبت نام"
+    "signUp": "ثبت‌نام",
+    "clickHere": "اینجا کلیک کنید"
   },
   "page": {
-    "title": "فراسی",
-    "desc": "فراسی"
+    "title": "دموی i18n در Next.js",
+    "desc": "چگونه پیاده‌سازی i18n را در Next.js انجام دهیم (بر اساس App Router)"
   },
   "home": {
-    "title": "فراسی",
-    "desc": "فراسی"
+    "title": "سلام، i18n در Next.js",
+    "desc": "این یک دمو از i18n در Next.js است",
+    "mostRecentClasses": "جدیدترین کلاس‌ها",
+    "findMostRecentClassesHere": "جدیدترین کلاس‌ها را اینجا پیدا کنید",
+    "mostRecentTranslatedBooks": "جدیدترین کتاب‌های ترجمه‌شده",
+    "artPicks": "گزیده‌های هنری",
+    "recentArtPicks": "گزیده‌های هنری اخیر",
+    "meetYourNewArtAdvisor": "با مشاور هنری جدید خود آشنا شوید"
+  },
+  "footer": {
+    "Hoodan": "هودان",
+    "classes": "کلاس‌ها",
+    "books": "کتاب‌ها",
+    "artItems": "اقلام هنری",
+    "articles": "مقالات",
+    "usersArea": "ناحیه کاربری",
+    "profile": "پروفایل",
+    "cart": "سبد خرید",
+    "allRightsReceivedHOODAN": "کلیه حقوق محفوظ است HOODAN"
+  },
+  "user": {
+    "cart": "سبد خرید",
+    "orders": "سفارش‌ها",
+    "productId": "شناسه محصول",
+    "productName": "نام محصول",
+    "quantity": "تعداد",
+    "pricePerEach": "قیمت هر واحد",
+    "totalPrice": "قیمت کل",
+    "orderId": "شناسه سفارش",
+    "orderStatus": "وضعیت سفارش",
+    "price": "قیمت",
+    "orderItems": "اقلام سفارش",
+    "orderRegistrationTime": "زمان ثبت سفارش",
+    "products": "محصولات"
   }
 }

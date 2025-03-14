@@ -2,7 +2,13 @@
   "isLoaded": true,
   "hedaer": {
     "searchBarPlaceholder": "Search by artist, gallery, style, theme, tag, etc.",
-    "searchBarPlaceholderMobile": "Search Hoodan"
+    "searchBarPlaceholderMobile": "Search Hoodan",
+    "profile": "Profile",
+    "cart": "Cart",
+    "classes": "Classes",
+    "books": "Books",
+    "artItems": "Art Items",
+    "articles": "Articles"
   },
   "bottomHeader": {
     "whatsnew": "What's New",
@@ -20,7 +26,8 @@
     "priceDatabase": "Price Database",
     "editorial": "Editorial",
     "login": "Log In",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "clickHere": "Click Here"
   },
   "page": {
     "title": "Next.js i18n Demo",
@@ -28,6 +35,38 @@
   },
   "home": {
     "title": "Hello, Next.js i18n",
-    "desc": "This is a demo of Next.js i18n"
+    "desc": "This is a demo of Next.js i18n",
+    "mostRecentClasses": "Most Recent Classes",
+    "findMostRecentClassesHere": "Find Most Recent Classes Here",
+    "mostRecentTranslatedBooks": "Most Recent Translated Books",
+    "artPicks": "Art Picks",
+    "recentArtPicks": "Recent Art Picks",
+    "meetYourNewArtAdvisor": "Meet your new art advisor"
+  },
+  "footer": {
+    "Hoodan": "Hoodan",
+    "classes": "Classes",
+    "books": "Books",
+    "artItems": "ArtItems",
+    "articles": "Articles",
+    "usersArea": "User'sArea",
+    "profile": "Profile",
+    "cart": "Cart",
+    "allRightsReceivedHOODAN": "All rights received HOODAN"
+  },
+  "user": {
+    "cart": "Cart",
+    "orders": "orders",
+    "productId": "Product Id",
+    "productName": "Product Name",
+    "quantity": "Quantity",
+    "pricePerEach": "Price Per Each",
+    "totalPrice": "Total Price",
+    "orderId": "Order Id",
+    "orderStatus": "Order Status",
+    "price": "Price",
+    "orderItems": "Order Items",
+    "orderRegistrationTime": "Order Registration Time",
+    "products": "Products"
   }
 }

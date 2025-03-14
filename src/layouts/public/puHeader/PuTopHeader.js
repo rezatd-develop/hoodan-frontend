@@ -82,11 +82,11 @@ export default function PuTopHeader(props) {
             {!isSubmenu &&
                 isSignedIn ?
                 <div className="auth-buttons">
-                    <Link href='/profile'>
-                        <HoSecondaryButton onClick={toggleShowSigningModal} className='w-100 mt-3'>Profile</HoSecondaryButton>
+                    <Link href='/user/profile'>
+                        <HoSecondaryButton onClick={toggleShowSigningModal} className='w-100 mt-3'>{t?.hedaer?.profile}</HoSecondaryButton>
                     </Link>
-                    <Link href='/cart'>
-                        <HoPrimaryButton onClick={toggleShowSigningModal} className='w-100 mt-2'>Cart</HoPrimaryButton>
+                    <Link href='/user/cart'>
+                        <HoPrimaryButton onClick={toggleShowSigningModal} className='w-100 mt-2'>{t?.hedaer?.cart}</HoPrimaryButton>
                     </Link>
                 </div>
                 : (
@@ -132,11 +132,11 @@ export default function PuTopHeader(props) {
 
                     {isSignedIn
                         ? <>
-                            <Link href='/profile'>
-                                <HoSecondaryButton className='ms-2'>Profile</HoSecondaryButton>
+                            <Link href='/user/profile'>
+                                <HoSecondaryButton className='ms-2'>{t?.hedaer?.profile}</HoSecondaryButton>
                             </Link>
-                            <Link href='/cart'>
-                                <HoPrimaryButton className='ms-2'>Cart</HoPrimaryButton>
+                            <Link href='/user/cart'>
+                                <HoPrimaryButton className='ms-2'>{t?.hedaer?.cart}</HoPrimaryButton>
                             </Link>
                         </>
                         : <>

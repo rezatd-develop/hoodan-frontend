@@ -3,8 +3,10 @@
 import HomeContentRow from "./HomeContentRow";
 import { useEffect, useState } from "react";
 import { GetPublicAllProductsService } from "../../../services/Api's/public/products/publicProductApiRoutes";
+import { useSelector } from "react-redux";
 
 export default function HomeBooksRow() {
+    const t = useSelector((state) => state.dictionary.t);
     const [contents, setContents] = useState([]);
     const productTypeLabel = 'books';
 
@@ -24,7 +26,7 @@ export default function HomeBooksRow() {
     return (
         <div className="mb-5 mt-5">
             <HomeContentRow scrollView
-                title='Most Recent Translated Books'
+                title={t?.home?.mostRecentTranslatedBooks}
                 description=''
                 contents={contents}
                 productTypeLabel={productTypeLabel} />

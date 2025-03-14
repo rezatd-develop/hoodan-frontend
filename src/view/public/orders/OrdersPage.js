@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import HoTable from '../../../components/table/HoTable';
 import { GetUserAllOrdersService } from "../../../services/Api's/user/useOrder";
 import HoPrimaryButton from '@/components/button/HoPrimaryButton';
+import { useSelector } from 'react-redux';
 
 export default function OrdersPage() {
     const [sortBy, setSortBy] = useState(null);
@@ -13,13 +14,14 @@ export default function OrdersPage() {
     const [cartItemsData, setCartItemsData] = useState([]);
     const [callServiceDate, setCallServiceDate] = useState(new Date());
     const [resultMessageClass, setResultMessageClass] = useState(<></>);
+    const t = useSelector((state) => state.dictionary.t);
 
     const columns = [
-        { id: 'orderId', label: 'Order Id', width: 70 },
-        { id: 'orderStatusLabel', label: 'Order Status', width: 140 },
-        { id: 'totalOrderPrice', label: 'Price', width: 70 },
-        { id: 'orderItems', label: 'Order Items', width: 150 },
-        { id: 'orderRegistrationTimeFormatted', label: 'Order Registration Time', width: 150 },
+        { id: 'orderId', label: t?.user?.orderId, width: 70 },
+        { id: 'orderStatusLabel', label: t?.user?.orderStatus, width: 140 },
+        { id: 'totalOrderPrice', label: t?.user?.price, width: 70 },
+        { id: 'orderItems', label: t?.user?.orderItems, width: 150 },
+        { id: 'orderRegistrationTimeFormatted', label: t?.user?.orderRegistrationTime, width: 150 },
     ];
 
     useEffect(() => {
@@ -62,7 +64,7 @@ export default function OrdersPage() {
                 }}
             >
                 <Typography level="h2" component="h1">
-                    Orders
+                    {t?.user?.orders}
                 </Typography>
             </Box>
             <HoTable

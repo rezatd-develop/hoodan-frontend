@@ -6,8 +6,10 @@ import blogSample from '../../../media/images/samples/blog_sample.webp'
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { GetPublicAllProductsService } from "@/services/Api's/public/products/publicProductApiRoutes";
+import { useSelector } from "react-redux";
 
 export default function HomeArtItemsGrid() {
+    const t = useSelector((state) => state.dictionary.t);
     const isMobile = useIsMobile();
     const [contents, setContents] = useState([]);
     const productTypeLabel = 'artItems';
@@ -26,8 +28,8 @@ export default function HomeArtItemsGrid() {
     }
 
     return <div className="px-lg-5 px-md-5 px-sm-4 px-4">
-        <div className="font-size-26">Art Picks</div>
-        <div className="font-size-26 mb-4 text-secondary">Recent Art Pics</div>
+        <div className="font-size-26">{t?.home?.artPicks}</div>
+        <div className="font-size-26 mb-4 text-secondary">{t?.home?.recentArtPicks}</div>
         <div className="row mx-0">
             {(isMobile && contents?.length > 0) ?
                 <div className="d-flex flex-nowrap row gap-4 overflow-hidden">

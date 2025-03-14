@@ -7,6 +7,7 @@ import HoTable from '../../../components/table/HoTable';
 import { CreateUserOrderService } from "../../../services/Api's/user/useOrder";
 import HoPrimaryButton from '@/components/button/HoPrimaryButton';
 import { GetUserCartService } from "@/services/Api\'s/user/userCart";
+import { useSelector } from 'react-redux';
 
 export default function CartPage() {
     const [sortBy, setSortBy] = useState(null);
@@ -14,13 +15,14 @@ export default function CartPage() {
     const [cartItemsData, setCartItemsData] = useState([]);
     const [callServiceDate, setCallServiceDate] = useState(new Date());
     const [resultMessageClass, setResultMessageClass] = useState(<></>);
+    const t = useSelector((state) => state.dictionary.t);
 
     const columns = [
-        { id: 'productId', label: 'Product Id', width: 70, sortable: true },
-        { id: 'productName', label: 'Product Name', width: 140 },
-        { id: 'quantity', label: 'Quantity', width: 70 },
-        { id: 'pricePerEach', label: 'Price Per Each', width: 70 },
-        { id: 'totalPrice', label: 'Total Price', width: 70 },
+        { id: 'productId', label: t?.user?.productId, width: 70, sortable: true },
+        { id: 'productName', label: t?.user?.productName, width: 140 },
+        { id: 'quantity', label: t?.user?.quantity, width: 70 },
+        { id: 'pricePerEach', label: t?.user?.pricePerEach, width: 70 },
+        { id: 'totalPrice', label: t?.user?.totalPrice, width: 70 },
     ];
 
 
@@ -77,7 +79,7 @@ export default function CartPage() {
                 }}
             >
                 <Typography level="h2" component="h1">
-                    Cart
+                    {t?.user?.cart}
                 </Typography>
             </Box>
             <HoTable

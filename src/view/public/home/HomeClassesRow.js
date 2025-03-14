@@ -3,11 +3,13 @@
 import HomeContentRow from "./HomeContentRow";
 import { useEffect, useState } from "react";
 import { GetPublicAllProductsService } from "../../../services/Api's/public/products/publicProductApiRoutes";
+import { useSelector } from "react-redux";
 
 export default function HomeClassesRow() {
+    const t = useSelector((state) => state.dictionary.t);
     const [contents, setContents] = useState([]);
     const productTypeLabel = 'classes';
-    
+
     useEffect(() => {
         let params = {
             limit: 4,
@@ -24,8 +26,8 @@ export default function HomeClassesRow() {
     return (<div className="mb-5">
         <HomeContentRow scrollView
             productTypeLabel={productTypeLabel}
-            title='Most Recent Classes'
-            description='Find Most Recent Classes Here'
+            title={t?.home?.mostRecentClasses}
+            description={t?.home?.findMostRecentClassesHere}
             contents={contents} />
     </div>
     )

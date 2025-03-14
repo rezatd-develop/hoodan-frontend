@@ -7,10 +7,10 @@ export default function PuBottomHeader() {
     const t = useSelector((state) => state.dictionary.t);
 
     const navLinks = [
-        { id: 4, label: 'Classes', href: '/classes' },
-        { id: 5, label: 'Books', href: '/books' },
-        { id: 6, label: 'Art Items', href: '/artItems' },
-        { id: 7, label: 'Articles', href: '/articles' },
+        { id: 4, label: t?.hedaer?.classes, href: '/classes' },
+        { id: 5, label: t?.hedaer?.books, href: '/books' },
+        { id: 6, label: t?.hedaer?.artItems, href: '/artItems' },
+        { id: 7, label: t?.hedaer?.articles, href: '/articles' },
     ]
 
     return <div className="container-fluid px-5 py-3 line-height-1">
