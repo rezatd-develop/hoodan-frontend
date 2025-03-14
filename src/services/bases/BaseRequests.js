@@ -1,7 +1,8 @@
 import axios from 'axios';
+const culture = window?.location?.pathname?.slice(1, 3);
 
 const axiosInstance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/en',
+    baseURL: `http://localhost:3001/api/${culture}`,
     timeout: 5000,
     // headers: {
     //     'Content-Type': 'application/json',
@@ -46,7 +47,7 @@ export const PostRequest = (apiUrl, data, callback) => {
 };
 
 
-export const PutRequest = (apiUrl, data, callback) => { 
+export const PutRequest = (apiUrl, data, callback) => {
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     const headers = {
         Authorization: token ? token : '',
