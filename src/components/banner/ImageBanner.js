@@ -1,6 +1,6 @@
 'use client'
 
-import { useIsMobile } from "@/utilities/CommonHelper";
+import { setCultureToUrl, useIsMobile } from "@/utilities/CommonHelper";
 import bannerSample from '../../media/images/samples/banner_sample.webp';
 import clsx from "clsx";
 import Image from "next/image";
@@ -18,7 +18,7 @@ export default function ImageBanner() {
                 <div className={clsx(isMobile ? 'col-12' : 'col-4', 'background-light-gray d-flex flex-column justify-content-center align-items-center')}>
                     <div className={clsx(isMobile ? 'font-size-26' : 'font-size-40', 'text-center p-4')}>{t?.home?.meetYourNewArtAdvisor}</div>
                     <div className="col-lg-6 col-md-6 col-sm-10 mt-3">
-                        <Link href='/'>
+                        <Link href={setCultureToUrl('/')}>
                             <HoSecondaryButton className='w-100 py-3 mb-4'>{t?.common?.clickHere}</HoSecondaryButton>
                         </Link>
                     </div>

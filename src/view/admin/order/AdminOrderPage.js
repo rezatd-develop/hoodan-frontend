@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import HoTable from '../../../components/table/HoTable';
 import { GetAdminAllOrdersService } from "../../../services/Api's/admin/order/adminOrderApiRoutes";
+import { setCultureToUrl } from '../../../utilities/CommonHelper';
 
 export default function AdminPage() {
     const [sortBy, setSortBy] = useState(null);
@@ -37,7 +38,7 @@ export default function AdminPage() {
             orderRegistrationTimeFormatted: new Date(item?.orderRegistrationTime).toLocaleString(),
             orderItems: item?.items.map(orderItem => orderItem.productTitle).join(', '),
             orderStatusLabel: translateOrderStatus(item?.orderStatus),
-            actionButtons: <Link href={`/admin/orders/${item.orderId}`} class="bi bi-pencil-square cursor-pointer"></Link>
+            actionButtons: <Link href={setCultureToUrl(`/admin/orders/${item.orderId}`)} class="bi bi-pencil-square cursor-pointer"></Link>
         }))
 
         setCartItemsData(newData)

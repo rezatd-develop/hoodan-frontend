@@ -8,7 +8,7 @@ import HoTextInput from "../../../components/input/HoTextInput";
 import logo from "../../../media/images/company/logo.png";
 import HoPrimaryButton from '../../../components/button/HoPrimaryButton';
 import HoSecondaryButton from '../../../components/button/HoSecondaryButton';
-import { useIsMobile } from '../../../utilities/CommonHelper';
+import { setCultureToUrl, useIsMobile } from '../../../utilities/CommonHelper';
 import SigningModal from '../../../view/auth/signUp/SigningModal';
 import { useRouter } from "next/navigation";
 
@@ -40,10 +40,10 @@ export default function PuTopHeader(props) {
     }
 
     const mobileNavLinks = [
-        { id: 4, label: 'Classes', href: '/classes' },
-        { id: 5, label: 'Books', href: '/Books' },
-        { id: 6, label: 'Art Items', href: '/ArtItems' },
-        { id: 7, label: 'Articles', href: '/articles' },
+        { id: 4, label: 'Classes', href: setCultureToUrl('/classes') },
+        { id: 5, label: 'Books', href: setCultureToUrl('/Books') },
+        { id: 6, label: 'Art Items', href: setCultureToUrl('/ArtItems') },
+        { id: 7, label: 'Articles', href: setCultureToUrl('/articles') },
     ];
 
     const navLinks = [
@@ -82,10 +82,10 @@ export default function PuTopHeader(props) {
             {!isSubmenu &&
                 isSignedIn ?
                 <div className="auth-buttons">
-                    <Link href='/user/profile'>
+                    <Link href={setCultureToUrl('/user/profile')}>
                         <HoSecondaryButton onClick={toggleShowSigningModal} className='w-100 mt-3'>{t?.hedaer?.profile}</HoSecondaryButton>
                     </Link>
-                    <Link href='/user/cart'>
+                    <Link href={setCultureToUrl('/user/cart')}>
                         <HoPrimaryButton onClick={toggleShowSigningModal} className='w-100 mt-2'>{t?.hedaer?.cart}</HoPrimaryButton>
                     </Link>
                 </div>
@@ -107,7 +107,7 @@ export default function PuTopHeader(props) {
 
     return (
         <div className="container-fluid d-flex align-items-center px-lg-4 px-md-4 px-sm-3 px-3 py-0">
-            <Link className="navbar-brand" href="/">
+            <Link className="navbar-brand" href={setCultureToUrl("/")}>
                 <Image src={logo} alt="hoodan logo" width={40} height={40} />
             </Link>
 
@@ -132,10 +132,10 @@ export default function PuTopHeader(props) {
 
                     {isSignedIn
                         ? <>
-                            <Link href='/user/profile'>
+                            <Link href={setCultureToUrl('/user/profile')}>
                                 <HoSecondaryButton className='ms-2'>{t?.hedaer?.profile}</HoSecondaryButton>
                             </Link>
-                            <Link href='/user/cart'>
+                            <Link href={setCultureToUrl('/user/cart')}>
                                 <HoPrimaryButton className='ms-2'>{t?.hedaer?.cart}</HoPrimaryButton>
                             </Link>
                         </>

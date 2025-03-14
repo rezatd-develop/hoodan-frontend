@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import HoTable from '../../../components/table/HoTable';
 import { GetAdminAllBlogsService } from "../../../services/Api's/admin/blog/adminBlogApiRoutes";
 import HoPrimaryButton from '@/components/button/HoPrimaryButton';
+import { setCultureToUrl } from '../../../utilities/CommonHelper';
 
 export default function AdminBlogsPage() {
     const [sortBy, setSortBy] = useState(null);
@@ -36,7 +37,7 @@ export default function AdminBlogsPage() {
         ({
             ...item,
             PublishDate: new Date(item?.publishDate).toLocaleString(),
-            actionButtons: <Link href={`/admin/blogs/${item.id}`} class="bi bi-pencil-square cursor-pointer"></Link>
+            actionButtons: <Link href={setCultureToUrl(`/admin/blogs/${item.id}`)} class="bi bi-pencil-square cursor-pointer"></Link>
         }))
 
         setCartItemsData(newData)
@@ -86,7 +87,7 @@ export default function AdminBlogsPage() {
                 onRowSelect={setSelected}
             />
             <HoTable />
-            <Link href='/admin/blogs/create'>
+            <Link href={setCultureToUrl('/admin/blogs/create')}>
                 <HoPrimaryButton className='mt-2 me-2 bg-success'>Create Product</HoPrimaryButton>
             </Link>
             <div className='text-center'>

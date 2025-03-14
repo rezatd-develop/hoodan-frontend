@@ -22,6 +22,7 @@ import Inventory2Icon from '@mui/icons-material/Inventory2';
 import { closeSidebar } from '../../utilities/profile/utils';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
+import { setCultureToUrl } from '@/utilities/CommonHelper';
 
 function Toggler({ defaultExpanded = false, renderToggle, children }) {
   const [open, setOpen] = React.useState(defaultExpanded);
@@ -134,7 +135,7 @@ export default function Sidebar(props) {
               <ListItemButton selected>
                 <ViewStreamIcon />
                 <ListItemContent>
-                  <Link href='/user/profile' level="title-sm" className='text-dark text-decoration-none'>{t?.user?.orders}</Link>
+                  <Link href={setCultureToUrl('/user/profile')} level="title-sm" className='text-dark text-decoration-none'>{t?.user?.orders}</Link>
                 </ListItemContent>
               </ListItemButton>
             </ListItem>
@@ -144,7 +145,7 @@ export default function Sidebar(props) {
               <ListItemButton selected>
                 <ShoppingCartRoundedIcon />
                 <ListItemContent>
-                  <Link href='/user/cart' level="title-sm" className='text-dark text-decoration-none'>{t?.user?.cart}</Link>
+                  <Link href={setCultureToUrl('/user/cart')} level="title-sm" className='text-dark text-decoration-none'>{t?.user?.cart}</Link>
                 </ListItemContent>
               </ListItemButton>
             </ListItem>
@@ -154,7 +155,7 @@ export default function Sidebar(props) {
               <ListItemButton selected>
                 <ShoppingCartRoundedIcon />
                 <ListItemContent>
-                  <Link href='/admin/orders' level="title-sm" className='text-dark text-decoration-none'>{t?.user?.orders}</Link>
+                  <Link href={setCultureToUrl('/admin/orders')} level="title-sm" className='text-dark text-decoration-none'>{t?.user?.orders}</Link>
                 </ListItemContent>
               </ListItemButton>
             </ListItem>
@@ -164,7 +165,7 @@ export default function Sidebar(props) {
               <ListItemButton selected>
                 <Inventory2Icon />
                 <ListItemContent>
-                  <Link href='/admin/products' level="title-sm" className='text-dark text-decoration-none'>{t?.user?.products}</Link>
+                  <Link href={setCultureToUrl('/admin/products')} level="title-sm" className='text-dark text-decoration-none'>{t?.user?.products}</Link>
                 </ListItemContent>
               </ListItemButton>
             </ListItem>

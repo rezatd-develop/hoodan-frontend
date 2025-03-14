@@ -48,3 +48,8 @@ export const translateOrderStatus = (orderStatus) => {
       break;
   }
 }
+
+export const setCultureToUrl = (url) => {
+  let culture = location?.pathname?.slice(1, 3);
+  return `/${culture}${url}`
+}

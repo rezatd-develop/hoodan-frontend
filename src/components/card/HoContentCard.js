@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { convertDateToDayMonth } from "@/utilities/CommonHelper";
+import { convertDateToDayMonth, setCultureToUrl } from "@/utilities/CommonHelper";
 
 export default function HoContentCard(props) {
-    return <Link className={clsx(props?.containerClassName, 'text-decoration-none text-dark')} href={props?.href || '/'}>
+    return <Link className={clsx(props?.containerClassName, 'text-decoration-none text-dark')} href={setCultureToUrl(props?.href) || setCultureToUrl('/')}>
         <Image width={300} height={300} src={props?.img} alt="blog image" className="w-100 h-auto" />
         {!props?.isArticle &&
             <div className="font-size-15 my-1">{props?.description}</div>
