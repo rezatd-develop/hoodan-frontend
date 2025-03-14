@@ -68,5 +68,17 @@
     "orderItems": "Order Items",
     "orderRegistrationTime": "Order Registration Time",
     "products": "Products"
+  },
+  "signing": {
+    "signUpOrLogin": "Sign Up Or Login",
+    "phoneNumber": "Phone Number",
+    "continue": "continue",
+    "policyRules": "bY login or Sign Up to our website, you accepted our website rules",
+    "enterCode": "Enter Code",
+    "pleaseEnterCode": "Please Enter code you've received",
+    "welcome": "Welcome",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "enter": "Enter"
   }
 }

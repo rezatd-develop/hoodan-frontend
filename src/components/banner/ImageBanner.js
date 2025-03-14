@@ -16,7 +16,7 @@ export default function ImageBanner() {
         <div className="px-lg-5 px-md-5 px-sm-4 px-4">
             <div className="row mx-0">
                 <div className={clsx(isMobile ? 'col-12' : 'col-4', 'background-light-gray d-flex flex-column justify-content-center align-items-center')}>
-                    <div className={clsx(isMobile ? 'font-size-26' : 'font-size-40', 'text-center p-4')}>{t?.home?.meetYourNewArtAdvisor}</div>
+                    <div className={clsx(isMobile ? 'font-size-26' : 'font-size-26', 'text-center p-4')}>{t?.home?.meetYourNewArtAdvisor}</div>
                     <div className="col-lg-6 col-md-6 col-sm-10 mt-3">
                         <Link href={setCultureToUrl('/')}>
                             <HoSecondaryButton className='w-100 py-3 mb-4'>{t?.common?.clickHere}</HoSecondaryButton>

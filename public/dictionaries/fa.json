@@ -68,5 +68,17 @@
     "orderItems": "اقلام سفارش",
     "orderRegistrationTime": "زمان ثبت سفارش",
     "products": "محصولات"
+  },
+  "signing": {
+    "signUpOrLogin": "ثبت‌نام یا ورود",
+    "phoneNumber": "شماره تلفن",
+    "continue": "ادامه",
+    "policyRules": "با ورود یا ثبت‌نام در وب‌سایت ما، شما قوانین سایت را پذیرفته‌اید",
+    "enterCode": "وارد کردن کد",
+    "pleaseEnterCode": "لطفاً کدی که دریافت کرده‌اید را وارد کنید",
+    "welcome": "خوش آمدید",
+    "firstName": "نام",
+    "lastName": "نام خانوادگی",
+    "enter": "ادامه"
   }
 }

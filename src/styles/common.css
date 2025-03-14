@@ -157,11 +157,7 @@ input[type="text"] {
 
 @font-face {
 	font-family: "yekanBakhBold";
-	src: url("../files/fonts/B\ Yekan+\ Bold.ttf");
-}
-
-html {
-	font-family: "Unica77 LL";
+	src: url("../files/fonts/fonnts.com-YekanBakh-Bold.ttf");
 }
 
 .unica-font {
