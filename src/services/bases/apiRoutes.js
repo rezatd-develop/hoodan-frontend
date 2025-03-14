@@ -53,6 +53,13 @@ export const apiRoutes = {
             removeUser: 'admin/user/removeUser',
             createUser: 'admin/user/createUser',
         },
+        blog: {
+            getAllBlogs: 'admin/blog/getAllBlogs',
+            getBlogDetail: 'admin/blog/getBlogDetail',
+            editBlog: 'admin/blog/editBlog',
+            createBlog: 'admin/blog/createBlog',
+            removeBlog: 'admin/blog/removeBlog'
+        }
     },
     auth: {
         isAdmin: 'auth/isAdmin',
