@@ -17,9 +17,11 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import BrightnessAutoRoundedIcon from '@mui/icons-material/BrightnessAutoRounded';
+import GroupIcon from '@mui/icons-material/Group';
 import ViewStreamIcon from '@mui/icons-material/ViewStream';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import { closeSidebar } from '../../utilities/profile/utils';
+import BookIcon from '@mui/icons-material/Book';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { setCultureToUrl } from '@/utilities/CommonHelper';
@@ -166,6 +168,26 @@ export default function Sidebar(props) {
                 <Inventory2Icon />
                 <ListItemContent>
                   <Link href={setCultureToUrl('/admin/products')} level="title-sm" className='text-dark text-decoration-none'>{t?.user?.products}</Link>
+                </ListItemContent>
+              </ListItemButton>
+            </ListItem>
+          }
+          {props?.isAdmin &&
+            <ListItem>
+              <ListItemButton selected>
+                <BookIcon />
+                <ListItemContent>
+                  <Link href={setCultureToUrl('/admin/blogs')} level="title-sm" className='text-dark text-decoration-none'>{t?.user?.blogs}</Link>
+                </ListItemContent>
+              </ListItemButton>
+            </ListItem>
+          }
+          {props?.isAdmin &&
+            <ListItem>
+              <ListItemButton selected>
+                <GroupIcon />
+                <ListItemContent>
+                  <Link href={setCultureToUrl('/admin/users')} level="title-sm" className='text-dark text-decoration-none'>{t?.user?.users}</Link>
                 </ListItemContent>
               </ListItemButton>
             </ListItem>

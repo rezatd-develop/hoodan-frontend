@@ -67,7 +67,9 @@
     "price": "قیمت",
     "orderItems": "اقلام سفارش",
     "orderRegistrationTime": "زمان ثبت سفارش",
-    "products": "محصولات"
+    "products": "محصولات",
+    "blogs": "مقالات",
+    "users": "کاربران"
   },
   "signing": {
     "signUpOrLogin": "ثبت‌نام یا ورود",

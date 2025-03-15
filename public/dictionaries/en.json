@@ -67,7 +67,9 @@
     "price": "Price",
     "orderItems": "Order Items",
     "orderRegistrationTime": "Order Registration Time",
-    "products": "Products"
+    "products": "Products",
+    "blogs": "Blogs",
+    "users": "Users"
   },
   "signing": {
     "signUpOrLogin": "Sign Up Or Login",

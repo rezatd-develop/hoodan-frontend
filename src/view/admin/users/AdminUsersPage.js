@@ -1,16 +1,15 @@
 'use client'
 
-import { translateOrderStatus } from '@/utilities/CommonHelper';
+import HoPrimaryButton from '@/components/button/HoPrimaryButton';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import HoTable from '../../../components/table/HoTable';
-import { GetAdminAllBlogsService } from "../../../services/Api's/admin/blog/adminBlogApiRoutes";
-import HoPrimaryButton from '@/components/button/HoPrimaryButton';
+import { GetAdminAllUsersService } from '../../../services/Api\'s/admin/user/adminUserApiRoutes';
 import { setCultureToUrl } from '../../../utilities/CommonHelper';
 
-export default function AdminBlogsPage() {
+export default function AdminUsersPage() {
     const [sortBy, setSortBy] = useState(null);
     const [selected, setSelected] = useState([]);
     const [cartItemsData, setCartItemsData] = useState([]);
@@ -20,26 +19,23 @@ export default function AdminBlogsPage() {
     const [resultMessageClass, setResultMessageClass] = useState(<></>);
 
     const columns = [
-        { id: 'id', label: 'Blog Id', width: 70 },
-        { id: 'title', label: 'Title', width: 140 },
-        { id: 'PublishDate', label: 'Publish Date', width: 140 },
-        { id: 'author', label: 'Author', width: 150 },
-        { id: 'categories', label: 'Categories', width: 150 },
-        { id: 'actionButtons', label: 'Action', width: 70 },
+        { id: 'firstName', label: 'First Name', width: 100 },
+        { id: 'lastName', label: 'Last Name', width: 100 },
+        { id: 'address', label: 'Address', width: 200 },
+        { id: 'postalCode', label: 'Postal Code', width: 150 },
+        { id: 'createdAt', label: 'Joined at', width: 150 },
     ];
 
     useEffect(() => {
-        GetAdminAllBlogsService(getAdminAllOrdersCallback);
+        GetAdminAllUsersService(getAdminAllUsersCallback);
     }, []);
 
-    const getAdminAllOrdersCallback = (data) => {
-        const newData = data?.map((item) =>
+    const getAdminAllUsersCallback = (data) => {
+        const newData = data?.users?.map((item) =>
         ({
             ...item,
-            PublishDate: new Date(item?.publishDate).toLocaleString(),
-            actionButtons: <Link href={setCultureToUrl(`/admin/blogs/${item.id}`)} class="bi bi-pencil-square cursor-pointer"></Link>
+            createdAt: new Date(item?.createdAt).toLocaleString(),
         }))
-
         setCartItemsData(newData)
     }
 
@@ -77,7 +73,7 @@ export default function AdminBlogsPage() {
                 }}
             >
                 <Typography level="h2" component="h1">
-                    Admin Blogs
+                    Admin Users
                 </Typography>
             </Box>
             <HoTable
@@ -87,9 +83,6 @@ export default function AdminBlogsPage() {
                 onRowSelect={setSelected}
             />
             <HoTable />
-            <Link href={setCultureToUrl('/admin/blogs/create')}>
-                <HoPrimaryButton className='mt-2 me-2 bg-success'>Create Product</HoPrimaryButton>
-            </Link>
             <div className='text-center'>
                 {resultMessageClass}
             </div>
