@@ -51,7 +51,7 @@ export const translateOrderStatus = (orderStatus) => {
 
 export const setCultureToUrl = (url) => {
   let culture = location?.pathname?.slice(1, 3);
-  return `/${culture}${url}`
+  return `/${culture}/${url}`
 }
 
 export const isCultureEn = () => location?.pathname?.slice(1, 3) === "en";

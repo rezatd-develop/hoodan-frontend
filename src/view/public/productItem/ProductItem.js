@@ -20,14 +20,16 @@ export default function ProductItem(props) {
     const [showCollapseFour, setShowCollapseFour] = useState(false);
     const [productDetail, setProductDetail] = useState(null);
     const [productQuantity, setProductQuantity] = useState(0);
-    const productId = window?.location?.pathname?.split("/")?.pop();
     const [contents, setContents] = useState([]);
+    const [productId, setProductId] = useState(window?.location?.pathname?.split("/")?.pop())
 
     useEffect(() => {
+        const productId = window?.location?.pathname?.split("/")?.pop();
+        setProductId(window?.location?.pathname?.split("/")?.pop());
         GetPublicAllProductsService({ productType: props?.productType }, getPublicAllProductsCallback);
         GetPublicProductDetailService({ id: productId }, getPublicProductDetailCallback)
         GetCartService(getUserCartCallback);
-    }, []);
+    }, [window?.location?.pathname?.split("/")?.pop()]);
 
     const getUserCartCallback = (data) => {
         let availableProductInUserCart = data?.items?.find(item => item?.productId === Number(productId));
