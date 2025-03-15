@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
+import { isCultureEn } from '@/utilities/CommonHelper';
 
 export default function HoModal(props) {
     const [open, setOpen] = React.useState(props?.open);
@@ -28,13 +29,14 @@ export default function HoModal(props) {
     }, [props?.open])
 
     return (
-        <React.Fragment>
+        <div>
             <Dialog
                 onClose={handleClose}
                 aria-labelledby="customized-dialog-title"
                 open={open}
                 maxWidth={props?.maxWidth}
                 fullWidth
+                className={clsx(isCultureEn() ? "unica-font" : "yekan-bakh-bold-font")}
             >
                 <DialogTitle className={clsx(props?.dialogTitleClassName, 'p-0')} id="customized-dialog-title">
                     {props?.title}
@@ -61,6 +63,6 @@ export default function HoModal(props) {
                     </Button>
                 </DialogActions> */}
             </Dialog>
-        </React.Fragment>
+        </div>
     );
 }
