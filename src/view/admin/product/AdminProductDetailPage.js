@@ -1,15 +1,11 @@
 'use client'
 
 import HoPrimaryButton from "@/components/button/HoPrimaryButton";
-import HoTable from "@/components/table/HoTable";
-import { enumerations } from "@/resources/enums/enumerations";
-import { EditAdminOrderDetailService, RemoveAdminOrderService } from "@/services/Api's/admin/order/adminOrderApiRoutes";
+import HoTextField from "@/components/textfield/HoTextField";
 import { CreateAdminProductService, EditAdminProductDetailService, GetAdminProductDetailService, RemoveAdminProductService } from "@/services/Api's/admin/product/adminProductApiRoutes";
-import { translateOrderStatus } from "@/utilities/CommonHelper";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import LabelBox from '../../../components/labelbox/LabelBox';
-import HoTextField from "@/components/textfield/HoTextField";
-import { useRouter } from "next/navigation";
 
 export default function AdminProductDetailPage() {
     const [productDetails, setProductDetails] = useState(null);
@@ -44,6 +40,7 @@ export default function AdminProductDetailPage() {
     const [userDefinedProductType, setUserDefinedProductType] = useState(null);
     const [hasProductId, setHasProductId] = useState(false);
     const router = useRouter()
+    const productId = window?.location.pathname.split("/").pop();
 
     const columns = [
         { id: 'productId', label: 'Product Id', width: 70 },
@@ -53,12 +50,11 @@ export default function AdminProductDetailPage() {
     ];
 
     useEffect(() => {
-        const productId = window?.location.pathname.split("/").pop();
-        if (typeof productId === 'number') setHasProductId(true);
+        if (!!Number(productId)) setHasProductId(true);
 
-        if (typeof productId === 'number')
+        if (!!Number(productId))
             GetAdminProductDetailService({ productId: productId }, getAdminProductDetailCallback)
-    }, [])
+    }, [productId])
 
     const getAdminProductDetailCallback = (data) => {
         if (!!data?.title) {
