@@ -3,7 +3,7 @@
 import HoPrimaryButton from "@/components/button/HoPrimaryButton";
 import HoCarousel from "@/components/carousel/HoCarousel";
 import { GetPublicProductDetailService } from "@/services/Api's/public/products/publicProductApiRoutes";
-import { useIsMobile } from "@/utilities/CommonHelper";
+import { pricePrefix, useIsMobile } from "@/utilities/CommonHelper";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import HoProductQuantityManager from "../../../components/button/HoProductQuantityManager";
@@ -94,7 +94,7 @@ export default function ProductItem(props) {
                     <div className="text-secondary mb-1">{productDetail?.thirdDescription}</div>
                 </div>
                 <div className="mt-5 mb-5">
-                    <div className="font-size-26 mb-2">{productDetail?.price}</div>
+                    <div className="font-size-26 mb-2">{pricePrefix(productDetail?.price)}</div>
                     {productQuantity > 0
                         ? <HoProductQuantityManager className='mt-3 w-100'
                             initialQuantity={productQuantity}

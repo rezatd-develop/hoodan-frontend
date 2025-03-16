@@ -18,7 +18,6 @@ export default function SigningModalPhoneNumber(props) {
 
     return (
         <div>
-        {console.log('***phoneNumber',phoneNumber)}
             <div>
                 <div className='font-size-20'>{t?.signing?.signUpOrLogin}</div>
                 <HoPhoneNumberField onChange={phoneNumberChanged} />

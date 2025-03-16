@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { convertDateToDayMonth, setCultureToUrl } from "@/utilities/CommonHelper";
+import { convertDateToDayMonth, pricePrefix, setCultureToUrl } from "@/utilities/CommonHelper";
 
 export default function HoContentCard(props) {
     return <Link className={clsx(props?.containerClassName, 'text-decoration-none text-dark')} href={setCultureToUrl(props?.href) || setCultureToUrl('/')}>
@@ -20,7 +20,7 @@ export default function HoContentCard(props) {
             <div className="font-size-15 my-2 text-secondary">{props?.description}</div>
         }
         <div className="font-size-15 my-1 text-secondary mb-4">{props?.secondDescription}</div>
-        <div className="font-size-26">{props?.price}</div>
+        <div className="font-size-26">{pricePrefix(props?.price)}</div>
         {props?.isArticle &&
             <div className="font-size-15 mt-5">Read</div>
         }

@@ -59,3 +59,8 @@ export const isCultureEn = () => location?.pathname?.slice(1, 3) === "en";
 export const correctPhoneNumberFormat = (phone) => {
   return phone.replace(/\D/g, '').replace(/^0/, '98');
 }
+
+export const pricePrefix = (price) => {
+  if (isCultureEn()) return `${price.toLocaleString()} Toman`
+  else return `${price} تومان`
+}
