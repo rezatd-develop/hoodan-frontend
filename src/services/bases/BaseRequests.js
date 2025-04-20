@@ -2,8 +2,9 @@ import axios from 'axios';
 const culture = window?.location?.pathname?.slice(1, 3);
 
 const axiosInstance = axios.create({
-    baseURL: `http://localhost:3001/api/${culture}`,
+    baseURL: `http://localhost:5000/api/${culture}`,
     timeout: 5000,
+    credentials: 'include'
     // headers: {
     //     'Content-Type': 'application/json',
     // },
