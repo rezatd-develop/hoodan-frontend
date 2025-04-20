@@ -1,12 +1,11 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-    baseURL: 'https://156.253.5.235:5000',
+    baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://localhost:3001',
     timeout: 5000,
     headers: {
         'Content-Type': 'application/json',
     },
-    credentials: 'include'
 });
 
 axiosInstance.interceptors.request.use(
