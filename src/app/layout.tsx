@@ -14,6 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="enamad" content="48183196" />
+      </head>
       <body>{children}</body>
     </html>
   );
