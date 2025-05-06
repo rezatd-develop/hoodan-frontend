@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 export const metadata: Metadata = {
-  title: "Hoodan",
+  title: "48183196",
   description: "",
 };
 
@@ -14,9 +14,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta name="enamad" content="11651107" />
-      </head>
       <body>{children}</body>
     </html>
   );
