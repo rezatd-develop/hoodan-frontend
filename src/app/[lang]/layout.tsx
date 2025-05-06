@@ -13,10 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <meta name="enamad" content="48183196" />
-      </head>
+    <html lang="fa" dir="rtl">
       <body>{children}</body>
     </html>
   );
