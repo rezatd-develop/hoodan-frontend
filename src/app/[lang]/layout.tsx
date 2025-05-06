@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 export const metadata: Metadata = {
-  title: "48183196",
+  title: "Hoodan",
   description: "",
 };
 
