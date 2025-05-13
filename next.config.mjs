@@ -6,7 +6,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['img.freepik.com', "", "i.ibb.co", "ibb.co", "localhost","156.253.5.235"],
+    domains: ['img.freepik.com', "", "i.ibb.co", "ibb.co", "localhost", "156.253.5.235", "hoodan.ir"],
   },
 };
 
