@@ -36,7 +36,7 @@ export default function HoModal(props) {
                 open={open}
                 maxWidth={props?.maxWidth}
                 fullWidth
-                className={clsx(isCultureEn() ? "unica-font" : "yekan-bakh-bold-font")}
+                className={clsx(isCultureEn() ? "unica-font" : "bnazanin-font")}
             >
                 <DialogTitle className={clsx(props?.dialogTitleClassName, 'p-0')} id="customized-dialog-title">
                     {props?.title}

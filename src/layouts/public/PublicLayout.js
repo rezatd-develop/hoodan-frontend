@@ -8,7 +8,7 @@ import { isCultureEn } from "@/utilities/CommonHelper";
 export default function PublicLayout({ children }) {
 
   return (
-    <div className={clsx(isCultureEn() ? "unica-font" : "yekan-bakh-bold-font")}>
+    <div className={clsx(isCultureEn() ? "unica-font" : "bnazanin-font")}>
       <PuHeader />
       {children}
       <PuFooter />

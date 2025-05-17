@@ -160,6 +160,16 @@ input[type="text"] {
 	src: url("../files/fonts/fonnts.com-YekanBakh-Bold.ttf");
 }
 
+@font-face {
+	font-family: "bNazanin";
+	src: url("../files/fonts/B-NAZANIN.TTF");
+}
+
+.bnazanin-font {
+	font-family: 'bNazanin';
+	font-weight: bold;
+}
+
 .unica-font {
 	font-family: "Unica77 LL";
 }
